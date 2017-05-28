@@ -31,7 +31,10 @@ class TODOSerializer(ModelSerializer):
         read_only_fields = ('id', 'schedules', 'category')
 
 
-    def get_datetime(self, obj):
+    def get_start_datetime(self, obj):
+        return obj.datetime.strftime("%Y-%m-%d %H:%M:%S.%f")
+
+    def get_end_datetime(self, obj):
         return obj.datetime.strftime("%Y-%m-%d %H:%M:%S.%f")
 
     def validate_category(self, value):
