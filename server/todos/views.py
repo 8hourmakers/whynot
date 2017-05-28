@@ -5,21 +5,31 @@ from rest_framework.generics import (
 from rest_framework.permissions import (
     IsAuthenticated,
 )
-from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_200_OK
+from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_200_OK, HTTP_406_NOT_ACCEPTABLE
 from rest_framework.views import APIView
 from .models import TODOItem, ScheduleItem
-from .serializers import TODOSerializer
+from .serializers import TODOSerializer, TODOScheduleSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from django.db.models import Q
 from .utils import today_date
 from categories.models import CategoryItem
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class TODOCreateAPIView(CreateAPIView):
 
     permission_classes = [IsAuthenticated]
     serializer_class = TODOSerializer
+
+    def validate_datetime(self, value):
+        try:
+            if len(value) <= 10:
+                start_datetime = datetime.strptime(value, '%Y-%m-%d')
+            else:
+                start_datetime = datetime.strptime(value, '%Y-%m-%d %H:%M:%S')
+        except:
+            raise None
+        return start_datetime
 
     def post(self, *args, **kwargs):
         data = self.request.data
@@ -29,19 +39,37 @@ class TODOCreateAPIView(CreateAPIView):
             if len(category) != 0:
                 category = category[0]
 
+        if 'start_datetime' not in data:
+            return Response(data={"message": "start_datetime format is invalid"}, status=HTTP_406_NOT_ACCEPTABLE)
+        if 'end_datetime' not in data:
+            return Response(data={"message": "end_datetime format is invalid"}, status=HTTP_406_NOT_ACCEPTABLE)
+        if 'repeat_day' not in data or not isinstance(data['repeat_day'], int):
+            return Response(data={"message": "repeat_day is invalid"}, status=HTTP_406_NOT_ACCEPTABLE)
+        start_datetime = self.validate_datetime(data['start_datetime'])
+        end_datetime = self.validate_datetime(data['end_datetime'])
 
         todo_item = TODOItem.objects.create(
             user=self.request.user,
             title = data['title'],
-            start_datetime=data['start_datetime'],
-            end_datetime=data['end_datetime'],
+            start_datetime=start_datetime,
+            end_datetime=end_datetime,
             repeat_day=data['repeat_day'],
             memo=data['memo'],
             alarm_minutes=data['alarm_minutes'],
             category=category
         )
-
         todo_item.save()
+
+        iter_datetime = start_datetime
+        while(iter_datetime <= end_datetime):
+            schedule_item = ScheduleItem(
+                todo=todo_item,
+                status='TODO',
+                datetime=iter_datetime
+            )
+            schedule_item.save()
+            iter_datetime += timedelta(days=data['repeat_day'])
+
         serializers = TODOSerializer(todo_item)
         # if serializers.is_valid():
         return Response(data=serializers.data, status=HTTP_200_OK)
@@ -96,7 +124,7 @@ class TODORetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
 
 class TODOScheduleListAPIView(ListAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = TODOSerializer
+    serializer_class = TODOScheduleSerializer
 
     def get_queryset(self, *args, **kwargs):
         search_query = self.request.GET.get('query', '')

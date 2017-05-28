@@ -24,7 +24,7 @@ class ScheduleItem(models.Model):
         ('TODO', 'TODO')
     )
 
-    todo = models.ForeignKey('todos.TODOItem')
+    todo = models.ForeignKey(TODOItem)
     status = models.CharField(max_length=10, default='TODO', choices=STATUS_CHOICES)
     datetime = models.DateTimeField(null=False)
 

@@ -17,6 +17,7 @@ from rest_framework.serializers import (
     )
 import logging
 from datetime import datetime
+from .utils import today_date
 
 
 class TODOSerializer(ModelSerializer):
@@ -32,10 +33,10 @@ class TODOSerializer(ModelSerializer):
 
 
     def get_start_datetime(self, obj):
-        return obj.datetime.strftime("%Y-%m-%d %H:%M:%S.%f")
+        return obj.datetime.strftime("%Y-%m-%d %H:%M:%S")
 
     def get_end_datetime(self, obj):
-        return obj.datetime.strftime("%Y-%m-%d %H:%M:%S.%f")
+        return obj.datetime.strftime("%Y-%m-%d %H:%M:%S")
 
     def validate_category(self, value):
         print(value)
@@ -68,7 +69,8 @@ class TODOSerializer(ModelSerializer):
 class TODOScheduleSerializer(ModelSerializer):
     schedules = SerializerMethodField()
     category = CategorySerializer(required=False)
-    datetime = SerializerMethodField()
+    start_datetime = SerializerMethodField()
+    end_datetime = SerializerMethodField()
 
     class Meta:
         model = TODOItem
@@ -78,15 +80,19 @@ class TODOScheduleSerializer(ModelSerializer):
 
 
     def get_schedules(self, obj):
-        schedules = ScheduleItem.objects.filter(Q(todo=obj) & (Q(status='UNCOMPLETE') | Q(status='TODO'))).all()
-        serializers = ScheduleSerializer(data=schedules, many=True)
-        if serializers.is_valid():
-            return serializers.data
-        else:
-            return []
+        schedules = ScheduleItem.objects.filter(Q(todo=obj) & (
+            Q(status='UNCOMPLETE') |
+            ( Q(status='TODO') & Q(datetime__date=today_date()))
+        )).all()
 
-    def get_datetime(self, obj):
-        return obj.datetime.strftime("%Y-%m-%d %H:%M:%S.%f")
+        serializers = ScheduleSerializer(schedules, many=True)
+        return serializers.data
+
+    def get_start_datetime(self, obj):
+        return obj.start_datetime.strftime("%Y-%m-%d %H:%M:%S")
+
+    def get_end_datetime(self, obj):
+        return obj.end_datetime.strftime("%Y-%m-%d %H:%M:%S")
 
 
 class ScheduleSerializer(ModelSerializer):
@@ -97,4 +103,4 @@ class ScheduleSerializer(ModelSerializer):
         fields = ['id', 'datetime', 'status']
 
     def get_datetime(self, obj):
-        return obj.datetime.strftime("%Y-%m-%d %H:%M:%S.%f")
+        return obj.datetime.strftime("%Y-%m-%d %H:%M:%S")
