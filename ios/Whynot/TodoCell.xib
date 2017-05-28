@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumBarunGothic.otf">
+            <string>NanumBarunGothicOTF</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dGz-6Y-KgF" customClass="TodoCell" customModule="Whynot" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="330" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="330" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yd6-dE-FJU">
+                        <rect key="frame" x="0.0" y="0.0" width="330" height="50"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iN-Ve-Rik">
+                                <rect key="frame" x="0.0" y="0.0" width="330" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영어 단어 20개 외우기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJn-cD-XfZ">
+                                <rect key="frame" x="22" y="15.5" width="144" height="18.5"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicOTF" family="NanumBarunGothicOTF" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFc-Z8-DJu">
+                                <rect key="frame" x="285" y="9.5" width="31" height="31"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="31" id="STg-nn-MoV"/>
+                                    <constraint firstAttribute="height" constant="31" id="rcc-4e-TWi"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9iN-Ve-Rik" secondAttribute="trailing" id="5kF-GH-ro8"/>
+                            <constraint firstAttribute="width" constant="330" id="AYm-3B-4s9"/>
+                            <constraint firstItem="9iN-Ve-Rik" firstAttribute="top" secondItem="yd6-dE-FJU" secondAttribute="top" id="Hc9-vg-2U5"/>
+                            <constraint firstItem="jJn-cD-XfZ" firstAttribute="centerY" secondItem="yd6-dE-FJU" secondAttribute="centerY" id="I1u-yC-GSe"/>
+                            <constraint firstItem="xFc-Z8-DJu" firstAttribute="centerY" secondItem="yd6-dE-FJU" secondAttribute="centerY" id="Nyu-uE-xhV"/>
+                            <constraint firstAttribute="bottom" secondItem="9iN-Ve-Rik" secondAttribute="bottom" id="TrY-LK-uMy"/>
+                            <constraint firstItem="9iN-Ve-Rik" firstAttribute="leading" secondItem="yd6-dE-FJU" secondAttribute="leading" id="XKa-PP-aRP"/>
+                            <constraint firstItem="jJn-cD-XfZ" firstAttribute="leading" secondItem="yd6-dE-FJU" secondAttribute="leading" constant="22" id="bxj-RN-u61"/>
+                            <constraint firstAttribute="trailing" secondItem="xFc-Z8-DJu" secondAttribute="trailing" constant="14" id="odc-qE-E9Q"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="yd6-dE-FJU" secondAttribute="bottom" id="G1G-4M-GNg"/>
+                <constraint firstAttribute="trailing" secondItem="yd6-dE-FJU" secondAttribute="trailing" id="T6d-7O-XMy"/>
+                <constraint firstItem="yd6-dE-FJU" firstAttribute="leading" secondItem="dGz-6Y-KgF" secondAttribute="leading" id="c2O-Nm-Z1F"/>
+                <constraint firstItem="yd6-dE-FJU" firstAttribute="top" secondItem="dGz-6Y-KgF" secondAttribute="top" id="yD7-si-Xjm"/>
+            </constraints>
+            <connections>
+                <outlet property="bg" destination="9iN-Ve-Rik" id="rOr-if-OUS"/>
+                <outlet property="root" destination="yd6-dE-FJU" id="bxi-9x-xQQ"/>
+                <outlet property="status" destination="xFc-Z8-DJu" id="zNh-cp-9Fj"/>
+            </connections>
+            <point key="canvasLocation" x="-220" y="123"/>
+        </collectionViewCell>
+    </objects>
+</document>

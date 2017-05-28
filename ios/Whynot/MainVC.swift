@@ -8,11 +8,14 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class MainVC: BaseVC {
 
+    @IBOutlet weak var todoTableView:TodoTableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        todoTableView.initialize(nowVC:self)
     }
 
     override func didReceiveMemoryWarning() {

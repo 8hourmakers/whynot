@@ -19,11 +19,11 @@ class ServerClient {
                          callback: @escaping (Bool) -> Void) {
         
         let uri = "/users/"
-        let json = JSON([
+        var json:JSON = [
             "username":userName,
             "email":email,
             "password":password
-        ])
+        ]
         
         HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .post) { (res, json) in
             if !res.isSuccess() {
@@ -153,9 +153,11 @@ class HttpUtil {
         let request = NSMutableURLRequest(url: URL(string: url)!)
         request.httpMethod = httpMethod.rawValue
         request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
+        request.setValue("\(ServerClient.token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
         if httpMethod != .get {
-            request.httpBody = json.rawValue as? Data
+            request.httpBody = String(describing: json).data(using: String.Encoding.utf8);
         }
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in

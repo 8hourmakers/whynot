@@ -1,5 +1,5 @@
 //
-//  RegisterVC.swift
+//  LoginVC.swift
 //  Whynot
 //
 //  Created by Noverish Harold on 2017. 5. 28..
@@ -8,23 +8,24 @@
 
 import UIKit
 
-class RegisterVC: BaseVC {
+class LoginVC: BaseVC {
 
-    @IBOutlet weak var userNameField:UITextField!
     @IBOutlet weak var emailField:UITextField!
     @IBOutlet weak var passwordField:UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
+        
+        // Do any additional setup after loading the view.
     }
     
-    @IBAction func registerClicked() {
-        let userName = userNameField.text!
-        let emailLabel = emailField.text!
-        let passwordLabel = passwordField.text!
+    @IBAction func loginClicked(_ sender: Any) {
+        let email = emailField.text!
+        let password = passwordField.text!
         
-        ServerClient.register(userName: userName, email: emailLabel, password: passwordLabel) { (success) in
+        ServerClient.login(email: email, password: password) { (success) in
             DispatchQueue.main.async {
                 if success {
                     self.backClicked()

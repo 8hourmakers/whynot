@@ -1,5 +1,5 @@
 //
-//  HomeVC.swift
+//  BaseVC.swift
 //  Whynot
 //
 //  Created by Noverish Harold on 2017. 5. 28..
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeVC: BaseVC {
+class BaseVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,5 +31,9 @@ class HomeVC: BaseVC {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func backClicked() {
+        self.dismiss(animated: true)
+    }
 
 }
