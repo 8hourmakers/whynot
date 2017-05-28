@@ -10,8 +10,14 @@ import Foundation
 
 extension String {
     @discardableResult
-    mutating func removeLastChar() -> String{
+    mutating func removeLastChar() -> String {
         self = self.substring(to: self.index(before: self.endIndex))
         return self
+    }
+}
+
+extension HTTPURLResponse {
+    func isSuccess() -> Bool {
+        return (200 ... 299).contains(self.statusCode)
     }
 }

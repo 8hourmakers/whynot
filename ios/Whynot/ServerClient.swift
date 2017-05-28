@@ -17,6 +17,7 @@ class ServerClient {
                          email: String,
                          password: String,
                          callback: @escaping (Bool) -> Void) {
+        
         let uri = "/users/"
         let json = JSON([
             "username":userName,
@@ -24,16 +25,14 @@ class ServerClient {
             "password":password
         ])
         
-        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .post) { (code, json) in
-            switch code {
-            case 200 ... 299:
-                self.token = json["token"].stringValue
-                callback(true)
-                break
-            default:
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .post) { (res, json) in
+            if !res.isSuccess() {
                 callback(false)
-                break
+                return
             }
+            
+            self.token = json["token"].stringValue
+            callback(true)
         }
     }
     
@@ -46,23 +45,101 @@ class ServerClient {
             "password":password
         ])
         
-        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .post) { (code, json) in
-            switch code {
-            case 200 ... 299:
-                self.token = json["token"].stringValue
-                callback(true)
-                break
-            default:
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .post) { (res, json) in
+            if !res.isSuccess() {
                 callback(false)
-                break
+                return
             }
+            
+            self.token = json["token"].stringValue
+            callback(true)
+        }
+    }
+    
+    static func logout(callback: @escaping (Bool) -> Void) {
+        let uri = "/users/auth/"
+        let json = JSON([:])
+        
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .delete) { (res, json) in
+            if !res.isSuccess() {
+                callback(false)
+                return
+            }
+            
+            callback(true)
+        }
+    }
+    
+    static func getMyTodo(keyword: String,
+                          category: Int,
+                          callback: @escaping ([TodoItem]) -> Void) {
+        let uri = "/todo/self/"
+        let json = JSON([
+            "search":keyword,
+            "category_id":category
+        ])
+        
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .get) { (res, json) in
+            if !res.isSuccess() {
+                return
+            }
+            
+            var items:[TodoItem] = []
+            
+            for innerJson in json.arrayValue {
+                items.append(TodoItem.extract(innerJson))
+            }
+            
+            callback(items)
+        }
+    }
+    
+    static func getRcmdTodo(categoryId: Int,
+                            callback: @escaping ([TodoItem]) -> Void) {
+        let uri = "/todo/recommend/"
+        let json = JSON(["category_id":categoryId])
+        
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .get) { (res, json) in
+            if !res.isSuccess() {
+                return
+            }
+            
+            var items:[TodoItem] = []
+            
+            for innerJson in json.arrayValue {
+                items.append(TodoItem.extract(innerJson))
+            }
+            
+            callback(items)
+        }
+    }
+    
+    static func makeTodo(todoItem: TodoItem,
+                         callback: @escaping (TodoItem) -> Void) {
+        let uri = "/todo/"
+        let json = JSON([
+            "title":todoItem.title,
+            "category_id":todoItem.category.id,
+            "start_datetime":GlobalDateFrmatter.string(from: todoItem.startDate),
+            "end_datetime":GlobalDateFrmatter.string(from: todoItem.endDate),
+            "repeat_day":todoItem.repeatDay,
+            "memo":todoItem.memo,
+            "alarm_minutes":todoItem.alarmMinute
+        ])
+        
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .post) { (res, json) in
+            if !res.isSuccess() {
+                return
+            }
+            
+            callback(TodoItem.extract(json))
         }
     }
 }
 
 class HttpUtil {
     
-    static func connect(url:String, json:JSON, httpMethod:HTTPMethod = .post, callback: @escaping (Int, JSON) -> Void) {
+    static func connect(url:String, json:JSON, httpMethod:HTTPMethod = .post, callback: @escaping (HTTPURLResponse, JSON) -> Void) {
         var url = url
         if httpMethod == HTTPMethod.get {
             url += "?"
@@ -90,7 +167,7 @@ class HttpUtil {
             let res = String(data:data!, encoding:String.Encoding.utf8)!
             print("<HTTP> \(url) : \(json.rawValue) -> \(res)\n\n")
             
-            callback(response.statusCode, JSON(data!))
+            callback(response, JSON(data!))
         }
         task.resume()
     }

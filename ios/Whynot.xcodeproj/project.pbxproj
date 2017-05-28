@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2702DD8F1EDA78B300A68F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DD8E1EDA78B300A68F74 /* AppDelegate.swift */; };
-		2702DD911EDA78B300A68F74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DD901EDA78B300A68F74 /* ViewController.swift */; };
+		2702DD911EDA78B300A68F74 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DD901EDA78B300A68F74 /* MainVC.swift */; };
 		2702DD941EDA78B300A68F74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2702DD921EDA78B300A68F74 /* Main.storyboard */; };
 		2702DD961EDA78B300A68F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2702DD951EDA78B300A68F74 /* Assets.xcassets */; };
 		2702DD991EDA78B300A68F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2702DD971EDA78B300A68F74 /* LaunchScreen.storyboard */; };
@@ -17,6 +17,9 @@
 		2702DDBD1EDA78C400A68F74 /* ServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDBC1EDA78C400A68F74 /* ServerClient.swift */; };
 		2702DDBF1EDA795A00A68F74 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDBE1EDA795A00A68F74 /* SwiftyJSON.swift */; };
 		2702DDC11EDA8A0F00A68F74 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDC01EDA8A0F00A68F74 /* Util.swift */; };
+		2702DDC31EDA92C500A68F74 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDC21EDA92C500A68F74 /* TodoItem.swift */; };
+		2702DDC51EDAA1E100A68F74 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */; };
+		27D107781EDAA5610047355F /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D107771EDAA5610047355F /* HomeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +42,7 @@
 /* Begin PBXFileReference section */
 		2702DD8B1EDA78B300A68F74 /* Whynot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whynot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2702DD8E1EDA78B300A68F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2702DD901EDA78B300A68F74 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2702DD901EDA78B300A68F74 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		2702DD931EDA78B300A68F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2702DD951EDA78B300A68F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2702DD981EDA78B300A68F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +56,9 @@
 		2702DDBC1EDA78C400A68F74 /* ServerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerClient.swift; sourceTree = "<group>"; };
 		2702DDBE1EDA795A00A68F74 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		2702DDC01EDA8A0F00A68F74 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		2702DDC21EDA92C500A68F74 /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		27D107771EDAA5610047355F /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,10 +114,9 @@
 				2702DD951EDA78B300A68F74 /* Assets.xcassets */,
 				2702DD971EDA78B300A68F74 /* LaunchScreen.storyboard */,
 				2702DD9A1EDA78B300A68F74 /* Info.plist */,
-				2702DD901EDA78B300A68F74 /* ViewController.swift */,
-				2702DDBC1EDA78C400A68F74 /* ServerClient.swift */,
-				2702DDC01EDA8A0F00A68F74 /* Util.swift */,
-				2702DDBE1EDA795A00A68F74 /* SwiftyJSON.swift */,
+				27D107751EDAA2500047355F /* vc */,
+				27D107761EDAA25A0047355F /* util */,
+				2702DDC21EDA92C500A68F74 /* TodoItem.swift */,
 			);
 			path = Whynot;
 			sourceTree = "<group>";
@@ -132,6 +137,26 @@
 				2702DDB01EDA78B300A68F74 /* Info.plist */,
 			);
 			path = WhynotUITests;
+			sourceTree = "<group>";
+		};
+		27D107751EDAA2500047355F /* vc */ = {
+			isa = PBXGroup;
+			children = (
+				2702DD901EDA78B300A68F74 /* MainVC.swift */,
+				2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */,
+				27D107771EDAA5610047355F /* HomeVC.swift */,
+			);
+			name = vc;
+			sourceTree = "<group>";
+		};
+		27D107761EDAA25A0047355F /* util */ = {
+			isa = PBXGroup;
+			children = (
+				2702DDBC1EDA78C400A68F74 /* ServerClient.swift */,
+				2702DDC01EDA8A0F00A68F74 /* Util.swift */,
+				2702DDBE1EDA795A00A68F74 /* SwiftyJSON.swift */,
+			);
+			name = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,10 +293,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2702DD911EDA78B300A68F74 /* ViewController.swift in Sources */,
+				2702DD911EDA78B300A68F74 /* MainVC.swift in Sources */,
+				27D107781EDAA5610047355F /* HomeVC.swift in Sources */,
 				2702DDBD1EDA78C400A68F74 /* ServerClient.swift in Sources */,
 				2702DDC11EDA8A0F00A68F74 /* Util.swift in Sources */,
 				2702DD8F1EDA78B300A68F74 /* AppDelegate.swift in Sources */,
+				2702DDC51EDAA1E100A68F74 /* RegisterVC.swift in Sources */,
+				2702DDC31EDA92C500A68F74 /* TodoItem.swift in Sources */,
 				2702DDBF1EDA795A00A68F74 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -517,6 +545,7 @@
 				2702DDB51EDA78B300A68F74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2702DDB61EDA78B300A68F74 /* Build configuration list for PBXNativeTarget "WhynotTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +554,7 @@
 				2702DDB81EDA78B300A68F74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2702DDB91EDA78B300A68F74 /* Build configuration list for PBXNativeTarget "WhynotUITests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +563,7 @@
 				2702DDBB1EDA78B300A68F74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
