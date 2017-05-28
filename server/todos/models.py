@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.contrib.auth import get_user_model
+from users.models import User
 
 class TODOItem(models.Model):
     title = models.CharField(max_length=100, null=False)
@@ -11,7 +11,7 @@ class TODOItem(models.Model):
     memo = models.TextField(null=True, blank=True)
     alarm_minutes = models.IntegerField(default=0)
     category = models.ForeignKey('categories.CategoryItem')
-    user = models.ForeignKey(get_user_model(), null=True, blank=True)
+    user = models.ForeignKey('users.User', null=True, blank=True)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
     def __str__(self):
@@ -24,7 +24,7 @@ class ScheduleItem(models.Model):
         ('TODO', 'TODO')
     )
 
-    todo = models.ForeignKey('todos.TODOItem')
+    todo = models.ForeignKey(TODOItem)
     status = models.CharField(max_length=10, default='TODO', choices=STATUS_CHOICES)
     datetime = models.DateTimeField(null=False)
 
