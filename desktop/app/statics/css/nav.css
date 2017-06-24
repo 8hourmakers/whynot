@@ -1,0 +1,40 @@
+.Nav {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 0 11px;
+    height: 51px;
+    border-bottom: 1px solid rgba(216, 216, 216, 1);
+}
+
+.Nav__tab {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.Nav__tab > li {
+    list-style: none;
+    padding: 7px 10px;
+    color: #000;
+}
+
+.Nav__tab > li.active {
+    color: rgba(63, 180, 251, 1);
+}
+
+.Nav__tab > li > a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.Nav__tab > li > a:hover {
+    opacity: .85;
+}

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>외않해?</title>
+    <link rel="stylesheet" href="./css/login.css" />
+</head>
+<body>
+    <app-login-page></app-login-page>
+
+    <script src="./polyfills.js"></script>
+    <script>
+        const bootstrap = require('./resolve-require')('renderer/bootstrap');
+        bootstrap('login');
+    </script>
+</body>
+</html>
