@@ -75,13 +75,23 @@ WSGI_APPLICATION = 'whynot.wsgi.application'
 APPEND_SLASH = True
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     },
+#     'options': {
+#         'managed': True
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    'options': {
-        'managed': True
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'whynot',
+        'USER': 'davidstock',
+        'PASSWORD': 'broker77',
+        'HOST': 'davidstock.cdfrphglbreq.ap-northeast-2.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
