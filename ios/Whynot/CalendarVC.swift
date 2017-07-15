@@ -1,14 +1,14 @@
 //
-//  BaseVC.swift
+//  CalendarVC.swift
 //  Whynot
 //
-//  Created by Noverish Harold on 2017. 5. 28..
+//  Created by Noverish Harold on 2017. 7. 11..
 //  Copyright © 2017년 Noverish Harold. All rights reserved.
 //
 
 import UIKit
 
-class BaseVC: UIViewController {
+class CalendarVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +31,5 @@ class BaseVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-    @IBAction func backClicked() {
-        self.dismiss(animated: true)
-    }
 
-    @IBAction func hideKeyboard() {
-        self.view.endEditing(true)
-    }
 }

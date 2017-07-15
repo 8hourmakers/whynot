@@ -12,6 +12,7 @@ class ServerClient {
     static let HOST = "http://8hourmakers.com/whynot/api"
     
     static var token = ""
+    static var categories:[TodoCategoryItem] = []
     
     static func register(userName: String,
                          email: String,
@@ -19,7 +20,7 @@ class ServerClient {
                          callback: @escaping (Bool) -> Void) {
         
         let uri = "/users/"
-        var json:JSON = [
+        let json:JSON = [
             "username":userName,
             "email":email,
             "password":password
@@ -31,6 +32,8 @@ class ServerClient {
                 return
             }
             
+            UserDefaults.standard.set(email, forKey: GlobalConfig.USER_DEFAULT_EMAIL)
+            UserDefaults.standard.set(password, forKey: GlobalConfig.USER_DEFAULT_PASSWORD)
             self.token = json["token"].stringValue
             callback(true)
         }
@@ -51,6 +54,8 @@ class ServerClient {
                 return
             }
             
+            UserDefaults.standard.set(email, forKey: GlobalConfig.USER_DEFAULT_EMAIL)
+            UserDefaults.standard.set(password, forKey: GlobalConfig.USER_DEFAULT_PASSWORD)
             self.token = json["token"].stringValue
             callback(true)
         }
@@ -66,6 +71,7 @@ class ServerClient {
                 return
             }
             
+            self.token = ""
             callback(true)
         }
     }
@@ -73,7 +79,7 @@ class ServerClient {
     static func getMyTodo(keyword: String,
                           category: Int,
                           callback: @escaping ([TodoItem]) -> Void) {
-        let uri = "/todo/self/"
+        let uri = "/todos/self/"
         let json = JSON([
             "search":keyword,
             "category_id":category
@@ -87,7 +93,7 @@ class ServerClient {
             var items:[TodoItem] = []
             
             for innerJson in json.arrayValue {
-                items.append(TodoItem.extract(innerJson))
+                items.append(TodoItem(innerJson))
             }
             
             callback(items)
@@ -107,24 +113,30 @@ class ServerClient {
             var items:[TodoItem] = []
             
             for innerJson in json.arrayValue {
-                items.append(TodoItem.extract(innerJson))
+                items.append(TodoItem(innerJson))
             }
             
             callback(items)
         }
     }
     
-    static func makeTodo(todoItem: TodoItem,
+    static func makeTodo(title: String,
+                         category: TodoCategoryItem,
+                         startDate: Date,
+                         endDate: Date,
+                         repeatDay: Int,
+                         memo: String,
+                         alarmMinute: Int,
                          callback: @escaping (TodoItem) -> Void) {
-        let uri = "/todo/"
+        let uri = "/todos/"
         let json = JSON([
-            "title":todoItem.title,
-            "category_id":todoItem.category.id,
-            "start_datetime":GlobalDateFrmatter.string(from: todoItem.startDate),
-            "end_datetime":GlobalDateFrmatter.string(from: todoItem.endDate),
-            "repeat_day":todoItem.repeatDay,
-            "memo":todoItem.memo,
-            "alarm_minutes":todoItem.alarmMinute
+            "title": title,
+            "category_id": category.id,
+            "start_datetime": GlobalDateFrmatter.string(from: startDate),
+            "end_datetime": GlobalDateFrmatter.string(from: endDate),
+            "repeat_day": repeatDay,
+            "memo": memo,
+            "alarm_minutes": alarmMinute
         ])
         
         HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .post) { (res, json) in
@@ -132,7 +144,25 @@ class ServerClient {
                 return
             }
             
-            callback(TodoItem.extract(json))
+            callback(TodoItem(json))
+        }
+    }
+    
+    static func getCategories(callback: (([TodoCategoryItem]) -> Void)? = nil) {
+        let uri = "/categories/"
+        let json = JSON([:])
+        
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .get) { (res, json) in
+            if !res.isSuccess() {
+                return
+            }
+            
+            self.categories.removeAll()
+            for innerJson in json.arrayValue {
+                self.categories.append(TodoCategoryItem(innerJson))
+            }
+            
+            callback?(self.categories)
         }
     }
 }
@@ -144,7 +174,7 @@ class HttpUtil {
         if httpMethod == HTTPMethod.get {
             url += "?"
             for (key, subJson):(String, JSON) in json {
-                url += key + "=" + (subJson.rawValue as! String) + "&"
+                url += "\(key)=\(subJson.rawValue)&"
             }
             url.removeLastChar()
         }
@@ -153,8 +183,11 @@ class HttpUtil {
         let request = NSMutableURLRequest(url: URL(string: url)!)
         request.httpMethod = httpMethod.rawValue
         request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
-        request.setValue("\(ServerClient.token)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        
+        if ServerClient.token != "" {
+            request.addValue("token \(ServerClient.token)", forHTTPHeaderField: "Authorization")
+        }
         
         if httpMethod != .get {
             request.httpBody = String(describing: json).data(using: String.Encoding.utf8);

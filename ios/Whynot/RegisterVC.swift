@@ -8,15 +8,27 @@
 
 import UIKit
 
-class RegisterVC: BaseVC {
+class RegisterVC: BaseVC, UITextFieldDelegate {
 
-    @IBOutlet weak var userNameField:UITextField!
-    @IBOutlet weak var emailField:UITextField!
-    @IBOutlet weak var passwordField:UITextField!
+    @IBOutlet weak var closeBtn: UIView!
+    @IBOutlet weak var userNameField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var registerBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        registerBtn.addBorder(color: UIColor.white)
+        closeBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backClicked)))
+        
+        //hide keyboard when screent tapped
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        
+        //added return button clicked listener
+        emailField.delegate = self
+        passwordField.delegate = self
+        userNameField.delegate = self
     }
     
     @IBAction func registerClicked() {
@@ -27,12 +39,30 @@ class RegisterVC: BaseVC {
         ServerClient.register(userName: userName, email: emailLabel, password: passwordLabel) { (success) in
             DispatchQueue.main.async {
                 if success {
-                    self.backClicked()
+                    self.performSegue(withIdentifier: GlobalConfig.SEGUE_REGISTER_SUCCESS, sender: nil)
                 } else {
-                    
+                    self.showToast("회원 가입에 실패했습니다")
                 }
             }
         }
     }
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailField:
+            passwordField.becomeFirstResponder()
+            break
+        case passwordField:
+            userNameField.becomeFirstResponder()
+            break
+        default:
+            hideKeyboard()
+            registerClicked()
+        }
+        return true
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

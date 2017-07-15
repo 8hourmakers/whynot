@@ -1,5 +1,5 @@
 //
-//  HomeVC.swift
+//  ViewController.swift
 //  Whynot
 //
 //  Created by Noverish Harold on 2017. 5. 28..
@@ -10,26 +10,25 @@ import UIKit
 
 class HomeVC: BaseVC {
 
+    @IBOutlet weak var todoTableView:TodoTableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        ServerClient.getCategories() { categories in
+            DispatchQueue.main.async {
+                self.todoTableView.initialize(nowVC:self)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func addClicked() {
+        performSegue(withIdentifier: GlobalConfig.SEGUE_TODO_ADD, sender: nil)
     }
-    */
-
 }
+

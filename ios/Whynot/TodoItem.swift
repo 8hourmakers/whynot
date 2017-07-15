@@ -17,80 +17,34 @@ class TodoItem {
     var schedules: [TodoScheduleItem]
     var memo: String
     var alarmMinute: Int
-    var category: TodoCategory
+    var category: TodoCategoryItem
     
-    init(id: Int,
-         title: String,
-         startDate: Date,
-         endDate: Date,
-         repeatDay: Int,
-         schedules: [TodoScheduleItem],
-         memo: String,
-         alarmMinute: Int,
-         category: TodoCategory) {
-        self.id = id
-        self.title = title
-        self.startDate = startDate
-        self.endDate = endDate
-        self.repeatDay = repeatDay
-        self.schedules = schedules
-        self.memo = memo
-        self.alarmMinute = alarmMinute
-        self.category = category
-    }
-    
-    static func extract(_ json: JSON) -> TodoItem {
-        let id = json["id"].intValue
-        let title = json["title"].stringValue
-        let startDate = GlobalDateFrmatter.date(from: json["start_datetime"].stringValue)!
-        let endDate = GlobalDateFrmatter.date(from: json["end_datetime"].stringValue)!
-        let repeatDay = json["repeat_day"].intValue
-        let memo = json["memo"].stringValue
-        let alarmMinute = json["alarm_minutes"].intValue
-        let category = TodoCategory.extract(json["category"])
+    init(_ json: JSON) {
+        id = json["id"].intValue
+        title = json["title"].stringValue
+        startDate = GlobalDateFrmatter.date(from: json["start_datetime"].stringValue)!
+        endDate = GlobalDateFrmatter.date(from: json["end_datetime"].stringValue)!
+        repeatDay = json["repeat_day"].intValue
+        memo = json["memo"].stringValue
+        alarmMinute = json["alarm_minutes"].intValue
+        category = TodoCategoryItem(json["category"])
         
-        var schedules:[TodoScheduleItem] = []
+        schedules = []
         for innerJson in json["schedules"].arrayValue {
             schedules.append(TodoScheduleItem.extract(innerJson))
         }
-        
-        return TodoItem(
-            id: id,
-            title: title,
-            startDate: startDate,
-            endDate: endDate,
-            repeatDay: repeatDay,
-            schedules: schedules,
-            memo: memo,
-            alarmMinute: alarmMinute,
-            category: category
-        )
     }
 }
 
-class TodoCategory {
+class TodoCategoryItem {
     var id: Int
     var name: String
     var imgUrl: String
     
-    init(id: Int,
-         name: String,
-         imgUrl: String) {
-        self.id = id
-        self.name = name
-        self.imgUrl = imgUrl
-    }
-    
-    static func extract(_ json: JSON) -> TodoCategory {
-        let id = json["id"].intValue
-        let name = json["name"].stringValue
-        let imgUrl = json["image"].stringValue
-        
-        return TodoCategory(
-            id: id,
-            name: name,
-            imgUrl: imgUrl
-        )
+    init(_ json: JSON) {
+        id = json["id"].intValue
+        name = json["name"].stringValue
+        imgUrl = json["image"].stringValue
     }
 }
 

@@ -19,18 +19,23 @@ class TodoTableView: PagingTableView, PagingTableViewDelegate, PagingTableViewDa
     }
     
     func setItem(cell: UICollectionViewCell, item: Any) -> UICollectionViewCell {
-//        if let cell = cell as? TodoCell {
-//            if let item = item as? TodoItem {
-//                cell.setItem(item)
-//            }
-//        }
-        
+        if let cell = cell as? TodoCell {
+            if let item = item as? TodoItem {
+                cell.setItem(item)
+            }
+        }
         
         return cell
     }
     
     func loadMoreItems(page: Int, callback: @escaping ([Any]) -> Void) {
-        callback(["","","","","","","","","","","","",""])
+        if ServerClient.categories.count == 0 {
+            return
+        }
+        
+        ServerClient.getMyTodo(keyword: "", category: ServerClient.categories.first!.id) { (todos) in
+            callback(todos)
+        }
     }
     
     func getNibName() -> String {

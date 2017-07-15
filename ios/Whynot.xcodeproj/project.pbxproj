@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2702DD8F1EDA78B300A68F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DD8E1EDA78B300A68F74 /* AppDelegate.swift */; };
-		2702DD911EDA78B300A68F74 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DD901EDA78B300A68F74 /* MainVC.swift */; };
+		2702DD911EDA78B300A68F74 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DD901EDA78B300A68F74 /* HomeVC.swift */; };
 		2702DD941EDA78B300A68F74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2702DD921EDA78B300A68F74 /* Main.storyboard */; };
 		2702DD961EDA78B300A68F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2702DD951EDA78B300A68F74 /* Assets.xcassets */; };
-		2702DD991EDA78B300A68F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2702DD971EDA78B300A68F74 /* LaunchScreen.storyboard */; };
 		2702DDA41EDA78B300A68F74 /* WhynotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDA31EDA78B300A68F74 /* WhynotTests.swift */; };
 		2702DDAF1EDA78B300A68F74 /* WhynotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDAE1EDA78B300A68F74 /* WhynotUITests.swift */; };
 		2702DDBD1EDA78C400A68F74 /* ServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDBC1EDA78C400A68F74 /* ServerClient.swift */; };
@@ -19,7 +18,14 @@
 		2702DDC11EDA8A0F00A68F74 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDC01EDA8A0F00A68F74 /* Util.swift */; };
 		2702DDC31EDA92C500A68F74 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDC21EDA92C500A68F74 /* TodoItem.swift */; };
 		2702DDC51EDAA1E100A68F74 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */; };
-		27D107781EDAA5610047355F /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D107771EDAA5610047355F /* HomeVC.swift */; };
+		27B92D7A1F149777008F2AA9 /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B92D791F149777008F2AA9 /* ListVC.swift */; };
+		27B92D7C1F1497C6008F2AA9 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B92D7B1F1497C6008F2AA9 /* MainVC.swift */; };
+		27B92D7E1F1498D4008F2AA9 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B92D7D1F1498D4008F2AA9 /* CalendarVC.swift */; };
+		27B92D801F14A4DF008F2AA9 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B92D7F1F14A4DF008F2AA9 /* ColorUtils.swift */; };
+		27B92D831F14AE5B008F2AA9 /* CategorySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B92D821F14AE5B008F2AA9 /* CategorySelectView.swift */; };
+		27B92D851F14AE66008F2AA9 /* CategorySelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B92D841F14AE66008F2AA9 /* CategorySelectView.xib */; };
+		27B92DC11F161E8E008F2AA9 /* GlobalConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B92DC01F161E8E008F2AA9 /* GlobalConfig.swift */; };
+		27D107781EDAA5610047355F /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D107771EDAA5610047355F /* SettingVC.swift */; };
 		27D1077D1EDAA9950047355F /* NanumBarunGothic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 27D107791EDAA9950047355F /* NanumBarunGothic.otf */; };
 		27D1077E1EDAA9950047355F /* NanumBarunGothicBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 27D1077A1EDAA9950047355F /* NanumBarunGothicBold.otf */; };
 		27D1077F1EDAA9950047355F /* NanumBarunGothicLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 27D1077B1EDAA9950047355F /* NanumBarunGothicLight.otf */; };
@@ -31,6 +37,8 @@
 		27D1078A1EDAAF850047355F /* TodoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D107891EDAAF850047355F /* TodoTableView.swift */; };
 		27D1078C1EDABDCD0047355F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D1078B1EDABDCD0047355F /* BaseVC.swift */; };
 		27D1078E1EDAC3DE0047355F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D1078D1EDAC3DE0047355F /* LoginVC.swift */; };
+		27D107901EDAC69E0047355F /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D1078F1EDAC69E0047355F /* SplashVC.swift */; };
+		27D107921EDAC78C0047355F /* TodoAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D107911EDAC78C0047355F /* TodoAddVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,10 +61,9 @@
 /* Begin PBXFileReference section */
 		2702DD8B1EDA78B300A68F74 /* Whynot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Whynot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2702DD8E1EDA78B300A68F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2702DD901EDA78B300A68F74 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		2702DD901EDA78B300A68F74 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		2702DD931EDA78B300A68F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2702DD951EDA78B300A68F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2702DD981EDA78B300A68F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2702DD9A1EDA78B300A68F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2702DD9F1EDA78B300A68F74 /* WhynotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhynotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2702DDA31EDA78B300A68F74 /* WhynotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhynotTests.swift; sourceTree = "<group>"; };
@@ -69,7 +76,14 @@
 		2702DDC01EDA8A0F00A68F74 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		2702DDC21EDA92C500A68F74 /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
-		27D107771EDAA5610047355F /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		27B92D791F149777008F2AA9 /* ListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
+		27B92D7B1F1497C6008F2AA9 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		27B92D7D1F1498D4008F2AA9 /* CalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
+		27B92D7F1F14A4DF008F2AA9 /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		27B92D821F14AE5B008F2AA9 /* CategorySelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySelectView.swift; sourceTree = "<group>"; };
+		27B92D841F14AE66008F2AA9 /* CategorySelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategorySelectView.xib; sourceTree = "<group>"; };
+		27B92DC01F161E8E008F2AA9 /* GlobalConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalConfig.swift; sourceTree = "<group>"; };
+		27D107771EDAA5610047355F /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		27D107791EDAA9950047355F /* NanumBarunGothic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothic.otf; sourceTree = "<group>"; };
 		27D1077A1EDAA9950047355F /* NanumBarunGothicBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicBold.otf; sourceTree = "<group>"; };
 		27D1077B1EDAA9950047355F /* NanumBarunGothicLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicLight.otf; sourceTree = "<group>"; };
@@ -81,6 +95,8 @@
 		27D107891EDAAF850047355F /* TodoTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableView.swift; sourceTree = "<group>"; };
 		27D1078B1EDABDCD0047355F /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		27D1078D1EDAC3DE0047355F /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		27D1078F1EDAC69E0047355F /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		27D107911EDAC78C0047355F /* TodoAddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoAddVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,16 +154,11 @@
 				2702DD8E1EDA78B300A68F74 /* AppDelegate.swift */,
 				2702DD921EDA78B300A68F74 /* Main.storyboard */,
 				2702DD951EDA78B300A68F74 /* Assets.xcassets */,
-				2702DD971EDA78B300A68F74 /* LaunchScreen.storyboard */,
 				2702DD9A1EDA78B300A68F74 /* Info.plist */,
 				27D107751EDAA2500047355F /* vc */,
+				27E56FA01F19D77F00018A8C /* todo */,
+				27B92D811F14AE31008F2AA9 /* view */,
 				27D107761EDAA25A0047355F /* util */,
-				2702DDC21EDA92C500A68F74 /* TodoItem.swift */,
-				27D107811EDAAE2D0047355F /* TodoCell.xib */,
-				27D107831EDAAE870047355F /* TodoCell.swift */,
-				27D107891EDAAF850047355F /* TodoTableView.swift */,
-				27D107851EDAAF740047355F /* PagingTableView.swift */,
-				27D107861EDAAF740047355F /* PagingTableView.xib */,
 			);
 			path = Whynot;
 			sourceTree = "<group>";
@@ -170,14 +181,30 @@
 			path = WhynotUITests;
 			sourceTree = "<group>";
 		};
+		27B92D811F14AE31008F2AA9 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				27D107851EDAAF740047355F /* PagingTableView.swift */,
+				27D107861EDAAF740047355F /* PagingTableView.xib */,
+				27B92D821F14AE5B008F2AA9 /* CategorySelectView.swift */,
+				27B92D841F14AE66008F2AA9 /* CategorySelectView.xib */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		27D107751EDAA2500047355F /* vc */ = {
 			isa = PBXGroup;
 			children = (
 				27D1078B1EDABDCD0047355F /* BaseVC.swift */,
-				2702DD901EDA78B300A68F74 /* MainVC.swift */,
-				2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */,
-				27D107771EDAA5610047355F /* HomeVC.swift */,
+				27D1078F1EDAC69E0047355F /* SplashVC.swift */,
 				27D1078D1EDAC3DE0047355F /* LoginVC.swift */,
+				2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */,
+				27B92D7B1F1497C6008F2AA9 /* MainVC.swift */,
+				2702DD901EDA78B300A68F74 /* HomeVC.swift */,
+				27B92D791F149777008F2AA9 /* ListVC.swift */,
+				27B92D7D1F1498D4008F2AA9 /* CalendarVC.swift */,
+				27D107771EDAA5610047355F /* SettingVC.swift */,
+				27D107911EDAC78C0047355F /* TodoAddVC.swift */,
 			);
 			name = vc;
 			sourceTree = "<group>";
@@ -188,8 +215,21 @@
 				2702DDBC1EDA78C400A68F74 /* ServerClient.swift */,
 				2702DDC01EDA8A0F00A68F74 /* Util.swift */,
 				2702DDBE1EDA795A00A68F74 /* SwiftyJSON.swift */,
+				27B92D7F1F14A4DF008F2AA9 /* ColorUtils.swift */,
+				27B92DC01F161E8E008F2AA9 /* GlobalConfig.swift */,
 			);
 			name = util;
+			sourceTree = "<group>";
+		};
+		27E56FA01F19D77F00018A8C /* todo */ = {
+			isa = PBXGroup;
+			children = (
+				27D107891EDAAF850047355F /* TodoTableView.swift */,
+				27D107811EDAAE2D0047355F /* TodoCell.xib */,
+				27D107831EDAAE870047355F /* TodoCell.swift */,
+				2702DDC21EDA92C500A68F74 /* TodoItem.swift */,
+			);
+			name = todo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +300,7 @@
 				TargetAttributes = {
 					2702DD8A1EDA78B300A68F74 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 28A4E58A28;
 						ProvisioningStyle = Automatic;
 					};
 					2702DD9E1EDA78B300A68F74 = {
@@ -301,9 +342,9 @@
 			files = (
 				27D1077E1EDAA9950047355F /* NanumBarunGothicBold.otf in Resources */,
 				27D1077F1EDAA9950047355F /* NanumBarunGothicLight.otf in Resources */,
+				27B92D851F14AE66008F2AA9 /* CategorySelectView.xib in Resources */,
 				27D107801EDAA9950047355F /* NanumBarunGothicUltraLight.otf in Resources */,
 				27D1077D1EDAA9950047355F /* NanumBarunGothic.otf in Resources */,
-				2702DD991EDA78B300A68F74 /* LaunchScreen.storyboard in Resources */,
 				2702DD961EDA78B300A68F74 /* Assets.xcassets in Resources */,
 				27D107881EDAAF740047355F /* PagingTableView.xib in Resources */,
 				27D107821EDAAE2D0047355F /* TodoCell.xib in Resources */,
@@ -332,19 +373,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2702DD911EDA78B300A68F74 /* MainVC.swift in Sources */,
-				27D107781EDAA5610047355F /* HomeVC.swift in Sources */,
+				2702DD911EDA78B300A68F74 /* HomeVC.swift in Sources */,
+				27B92D801F14A4DF008F2AA9 /* ColorUtils.swift in Sources */,
+				27B92D7C1F1497C6008F2AA9 /* MainVC.swift in Sources */,
+				27D107921EDAC78C0047355F /* TodoAddVC.swift in Sources */,
+				27D107781EDAA5610047355F /* SettingVC.swift in Sources */,
 				2702DDBD1EDA78C400A68F74 /* ServerClient.swift in Sources */,
 				27D1078A1EDAAF850047355F /* TodoTableView.swift in Sources */,
 				2702DDC11EDA8A0F00A68F74 /* Util.swift in Sources */,
+				27B92D831F14AE5B008F2AA9 /* CategorySelectView.swift in Sources */,
 				27D107841EDAAE870047355F /* TodoCell.swift in Sources */,
 				2702DD8F1EDA78B300A68F74 /* AppDelegate.swift in Sources */,
 				27D1078C1EDABDCD0047355F /* BaseVC.swift in Sources */,
 				2702DDC51EDAA1E100A68F74 /* RegisterVC.swift in Sources */,
 				27D1078E1EDAC3DE0047355F /* LoginVC.swift in Sources */,
 				2702DDC31EDA92C500A68F74 /* TodoItem.swift in Sources */,
+				27B92D7A1F149777008F2AA9 /* ListVC.swift in Sources */,
+				27B92D7E1F1498D4008F2AA9 /* CalendarVC.swift in Sources */,
+				27B92DC11F161E8E008F2AA9 /* GlobalConfig.swift in Sources */,
 				2702DDBF1EDA795A00A68F74 /* SwiftyJSON.swift in Sources */,
 				27D107871EDAAF740047355F /* PagingTableView.swift in Sources */,
+				27D107901EDAC69E0047355F /* SplashVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,14 +435,6 @@
 				2702DD931EDA78B300A68F74 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2702DD971EDA78B300A68F74 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2702DD981EDA78B300A68F74 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -496,6 +537,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 28A4E58A28;
 				INFOPLIST_FILE = Whynot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Noverish.Whynot;
@@ -508,6 +550,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 28A4E58A28;
 				INFOPLIST_FILE = Whynot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Noverish.Whynot;

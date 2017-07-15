@@ -17,6 +17,8 @@ class TodoCell: UICollectionViewCell {
     @IBOutlet weak var bg:UIView!
     @IBOutlet weak var status:UIView!
     
+    @IBOutlet weak var title: UILabel!
+    
     override func awakeFromNib() {
         status.layer.shadowColor = TodoCell.shadowColor.cgColor
         status.layer.shadowOpacity = 1
@@ -40,5 +42,9 @@ class TodoCell: UICollectionViewCell {
         gradientLayer1.endPoint = CGPoint(x: 1, y: 1)
         
         bg.layer.addSublayer(gradientLayer1)
+    }
+    
+    func setItem(_ item: TodoItem) {
+        title.text = item.title
     }
 }
