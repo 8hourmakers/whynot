@@ -1,0 +1,6 @@
+{
+    "plugins": [
+        "transform-async-generator-functions",
+        "syntax-async-functions"
+    ]
+}

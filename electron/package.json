@@ -1,0 +1,27 @@
+{
+  "name": "whynot-electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/app.js",
+  "dependencies": {
+    "@angular/common": "^4.3.0",
+    "@angular/compiler": "^4.3.0",
+    "@angular/core": "^4.3.0",
+    "@angular/forms": "^4.3.0",
+    "@angular/platform-browser": "^4.3.0",
+    "@angular/platform-browser-dynamic": "^4.3.0",
+    "core-js": "^2.4.1",
+    "fs-extra": "^4.0.0",
+    "lodash": "^4.17.4",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1",
+    "rxjs": "^5.4.2",
+    "zone.js": "^0.8.13"
+  },
+  "devDependencies": {
+    "electron": "^1.6.11"
+  },
+  "scripts": {},
+  "author": "8hourmakers <8hourmakers@gmail.com>",
+  "license": "MIT"
+}

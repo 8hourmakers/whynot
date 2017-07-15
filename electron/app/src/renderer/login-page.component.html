@@ -1,0 +1,33 @@
+<div class="LoginPage">
+    <h1 class="LoginPage__title">
+        <img src="images/logo@2x.png" class="LoginPage__logo" />
+    </h1>
+
+    <form (submit)="login($event)" class="LoginForm">
+        <h2 class="LoginForm__name">LOGIN</h2>
+
+        <p [hidden]="!isErrorCaught" class="LoginForm__error">
+            {{errorMessage}}
+        </p>
+
+        <section class="LoginForm__row">
+            <label for="email">Email</label>
+            <input [(ngModel)]="model.email" id="email" type="email" name="email" required />
+        </section>
+
+        <section class="LoginForm__row">
+            <label for="password">Password</label>
+            <input [(ngModel)]="model.password" id="password" type="password" name="password" required />
+        </section>
+
+        <button type="submit"
+                [disabled]="loading"
+                class="LoginForm__submitBtn">LOGIN</button>
+    </form>
+
+    <button (click)="openRegisterPopup()" class="LoginPage__registerBtn">
+        <img src="images/register-btn@2x.png" />
+    </button>
+
+    <app-modal-container></app-modal-container>
+</div>

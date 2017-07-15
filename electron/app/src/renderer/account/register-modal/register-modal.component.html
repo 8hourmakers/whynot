@@ -1,0 +1,38 @@
+<div class="RegisterModal">
+    <div class="RegisterModal__title">
+        <button (click)="close()" class="RegisterModal__closeBtn">
+            <img src="images/close@2x.png" />
+        </button>
+        <img src="images/logo@2x.png" class="RegisterModal__logo" />
+    </div>
+
+    <form (ngSubmit)="registerNewAccount()" #registerForm="ngForm" class="RegisterModal__form">
+        <h1>REGISTER</h1>
+
+        <p [hidden]="!isErrorCaught" class="RegisterModal__error">
+            {{errorMessage}}
+        </p>
+
+        <section>
+            <label for="registerEmail">Email</label>
+            <input [(ngModel)]="model.email" id="registerEmail" name="email" required type="email" />
+        </section>
+
+        <section>
+            <label for="registerUsername">Username</label>
+            <input [(ngModel)]="model.username" id="registerUsername" name="username" required type="text" />
+        </section>
+
+        <section>
+            <label for="registerPW">Password</label>
+            <input [(ngModel)]="model.password" id="registerPW" name="password" required type="password" />
+        </section>
+
+        <section>
+            <label for="registerPWConfirm">Password Confirm</label>
+            <input [(ngModel)]="model.passwordConfirm" id="registerPWConfirm" name="passwordConfirm" required type="password" />
+        </section>
+
+        <button type="submit">CREATE ACCOUNT</button>
+    </form>
+</div>
