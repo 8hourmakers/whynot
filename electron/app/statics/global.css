@@ -21,3 +21,15 @@ body {
     user-select: none;
     cursor: default;
 }
+
+button {
+    display: inline-flex;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: 0;
+    background: transparent;
+    cursor: pointer;
+}
