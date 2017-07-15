@@ -1,0 +1,12 @@
+<nav class="Nav">
+    <ul class="Nav__tab">
+        <li *ngFor="let tab of tabs" [class.active]="isTabSelected(tab)">
+            <a (click)="selectTab(tab)">{{tab.name}}</a>
+        </li>
+    </ul>
+
+    <button (click)="selectTab(settingTab)"
+            [class.active]="isTabSelected(settingTab)" class="Nav__settingBtn">
+        <img [src]="isTabSelected(settingTab) ? 'images/user__active@2x.png' : 'images/user@2x.png'" />
+    </button>
+</nav>

@@ -1,6 +1,7 @@
 const { NgModule } = require('@angular/core');
 const SharedModule = require('../shared/shared.module');
 const ModalModule = require('./modal/modal.module');
+const NavComponent = require('./nav/nav.component');
 
 
 class CoreModule {
@@ -12,10 +13,13 @@ CoreModule.annotations = [
             SharedModule,
             ModalModule
         ],
-        declarations: [],
+        declarations: [
+            NavComponent
+        ],
         providers: [],
         exports: [
-            ModalModule
+            ModalModule,
+            NavComponent
         ]
     })
 ];
