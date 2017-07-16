@@ -19,7 +19,7 @@ class TodoTableView: PagingTableView, PagingTableViewDelegate, PagingTableViewDa
     }
     
     func setItem(cell: UICollectionViewCell, item: Any) -> UICollectionViewCell {
-        if let cell = cell as? TodoCell {
+        if let cell = cell as? ScheduleCell {
             if let item = item as? TodoItem {
                 cell.setItem(item)
             }
@@ -29,17 +29,13 @@ class TodoTableView: PagingTableView, PagingTableViewDelegate, PagingTableViewDa
     }
     
     func loadMoreItems(page: Int, callback: @escaping ([Any]) -> Void) {
-        if ServerClient.categories.count == 0 {
-            return
-        }
-        
-        ServerClient.getMyTodo(keyword: "", category: ServerClient.categories.first!.id) { (todos) in
-            callback(todos)
+        ServerClient.getSchedules() { (schedules) in
+            callback(schedules)
         }
     }
     
     func getNibName() -> String {
-        return "TodoCell"
+        return String(describing: ScheduleCell.self)
     }
     
     func didSelected(item: Any) {

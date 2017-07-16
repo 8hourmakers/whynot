@@ -18,7 +18,7 @@ class ListVC: UIViewController, CategorySelectViewDelegate {
         categorySelectView.delegate = self
     }
     
-    func categorySelectViewClicked(category: TodoCategoryItem) {
+    func categorySelectViewClicked(category: CategoryItem) {
         print(category)
     }
 }

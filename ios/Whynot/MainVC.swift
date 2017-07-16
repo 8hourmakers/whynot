@@ -44,9 +44,9 @@ class MainVC: UIViewController {
         calendarVCContainer.isHidden = (nowTab == .calendar) ? false : true
         settingVCContainer.isHidden = (nowTab == .setting) ? false : true
         
-        homeTabBtn.setTitleColor((nowTab == .home) ? ColorUtils.MAIN_COLOR : UIColor.black, for: .normal)
-        listTabBtn.setTitleColor((nowTab == .list) ? ColorUtils.MAIN_COLOR : UIColor.black, for: .normal)
-        calendarTabBtn.setTitleColor((nowTab == .calendar) ? ColorUtils.MAIN_COLOR : UIColor.black, for: .normal)
+        homeTabBtn.setTitleColor((nowTab == .home) ? UIColor.mainColor : UIColor.black, for: .normal)
+        listTabBtn.setTitleColor((nowTab == .list) ? UIColor.mainColor : UIColor.black, for: .normal)
+        calendarTabBtn.setTitleColor((nowTab == .calendar) ? UIColor.mainColor : UIColor.black, for: .normal)
         settingTabBtn.setImage((nowTab == .setting) ? UIImage(named:"btnMyOn") : UIImage(named:"btnMyOff"), for: .normal)
     }
     

@@ -20,7 +20,7 @@ class CategorySelectView: UIView {
     @IBOutlet weak var etc: UIView!
     
     var delegate: CategorySelectViewDelegate?
-    var nowSelected: TodoCategoryItem?
+    var nowSelected: CategoryItem?
     
     var relation: [UIView:String] {
         return [
@@ -63,22 +63,38 @@ class CategorySelectView: UIView {
             return
         }
         
+        let icons:[UIView:(UIImage, UIImage)] = [
+            beauty: (#imageLiteral(resourceName: "categoryBeautyOn"), #imageLiteral(resourceName: "categoryBeautyOff")),
+            living: (#imageLiteral(resourceName: "categoryLivingOn"), #imageLiteral(resourceName: "categoryLivingOff")),
+            health: (#imageLiteral(resourceName: "categoryHealthOn"), #imageLiteral(resourceName: "categoryHealthOff")),
+            study: (#imageLiteral(resourceName: "categoryStudyOn"), #imageLiteral(resourceName: "categoryStudyOff")),
+            exersize: (#imageLiteral(resourceName: "categoryExersizeOn"), #imageLiteral(resourceName: "categoryExersizeOff")),
+            friend: (#imageLiteral(resourceName: "categoryFriendOn"), #imageLiteral(resourceName: "categoryFriendOff")),
+            finance: (#imageLiteral(resourceName: "categoryFinanceOn"), #imageLiteral(resourceName: "categoryFinanceOff")),
+            etc: (#imageLiteral(resourceName: "categoryEtcOn"), #imageLiteral(resourceName: "categoryEtcOff"))
+        ]
+        
         for view in relation.keys {
-            let label:UILabel = view.subviews.filter({$0 is UILabel}).first as! UILabel
-            label.textColor = (relation[view] == clickedCategoryStr) ? UIColor.black : UIColor.white
+            let label: UILabel = view.subviews.filter({$0 is UILabel}).first as! UILabel
+            label.font = (relation[view] == clickedCategoryStr) ? UIFont.nanumBold.withSize(14) : UIFont.nanumLight.withSize(14)
+            
+            let imageView: UIImageView = view.subviews.filter({$0 is UIImageView}).first as! UIImageView
+            imageView.image = (relation[view] == clickedCategoryStr) ? icons[view]!.0 : icons[view]!.1
         }
 
         for category in ServerClient.categories {
             if category.name == clickedCategoryStr {
                 nowSelected = category
                 delegate?.categorySelectViewClicked(category: category)
+                
+                
             }
         }
     }
 }
 
 protocol CategorySelectViewDelegate {
-    func categorySelectViewClicked(category: TodoCategoryItem)
+    func categorySelectViewClicked(category: CategoryItem)
 }
 
 

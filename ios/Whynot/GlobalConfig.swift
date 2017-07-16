@@ -19,4 +19,7 @@ class GlobalConfig {
     static let SEGUE_TODO_ADD = "segTodoAdd"
     
     static let SPLASH_DURATION: Double = 1 //second
+    
+    static let CALENDAR_START_DATE = Date(year: 1970, month: 1, day: 1)
+    static let CALENDAR_END_DATE = Date(year: 2099, month: 12, day: 31)
 }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumBarunGothic.otf">
+            <string>NanumBarunGothicOTF</string>
+        </array>
+        <array key="NanumBarunGothicLight.otf">
+            <string>NanumBarunGothicOTFLight</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="GF4-g1-ap4">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMc-6M-Bsj">
+                        <rect key="frame" x="305" y="0.0" width="70" height="74"/>
+                        <color key="backgroundColor" red="0.2470588235" green="0.70588235290000001" blue="0.98431372549999996" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="ryE-7J-hVP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="NanumBarunGothicOTF" family="NanumBarunGothicOTF" pointSize="16"/>
+                        <state key="normal" title="삭제">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vnb-Gn-UTf">
+                        <rect key="frame" x="235" y="0.0" width="70" height="74"/>
+                        <color key="backgroundColor" red="0.51372549020000002" green="0.81960784310000001" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="i8I-jI-715"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="NanumBarunGothicOTF" family="NanumBarunGothicOTF" pointSize="16"/>
+                        <state key="normal" title="수정">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mx0-wp-FJV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XD3-P2-Fai">
+                                <rect key="frame" x="11" y="12" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="U4R-Sk-d28"/>
+                                    <constraint firstAttribute="width" constant="50" id="wU4-ii-vwD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="으아이으아이으아" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neu-Z5-fii">
+                                <rect key="frame" x="85" y="19" width="114.5" height="18.5"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicOTF" family="NanumBarunGothicOTF" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12341234일마다" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cag-qq-UaI">
+                                <rect key="frame" x="85" y="42.5" width="88.5" height="14"/>
+                                <fontDescription key="fontDescription" name="NanumBarunGothicOTFLight" family="NanumBarunGothicOTF" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="neu-Z5-fii" firstAttribute="top" secondItem="Mx0-wp-FJV" secondAttribute="top" constant="19" id="44h-s6-eRt"/>
+                            <constraint firstItem="Cag-qq-UaI" firstAttribute="leading" secondItem="neu-Z5-fii" secondAttribute="leading" id="8XE-o8-tyu"/>
+                            <constraint firstItem="neu-Z5-fii" firstAttribute="leading" secondItem="XD3-P2-Fai" secondAttribute="trailing" constant="24" id="DDZ-sc-eLc"/>
+                            <constraint firstItem="Cag-qq-UaI" firstAttribute="top" secondItem="neu-Z5-fii" secondAttribute="bottom" constant="5" id="P6r-Yi-3NR"/>
+                            <constraint firstItem="XD3-P2-Fai" firstAttribute="leading" secondItem="Mx0-wp-FJV" secondAttribute="leading" constant="11" id="haf-Y9-Sp9"/>
+                            <constraint firstItem="XD3-P2-Fai" firstAttribute="centerY" secondItem="Mx0-wp-FJV" secondAttribute="centerY" id="tgP-9q-Wlu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="UMc-6M-Bsj" firstAttribute="top" secondItem="GF4-g1-ap4" secondAttribute="top" id="4M5-BZ-NRv"/>
+                <constraint firstAttribute="bottom" secondItem="UMc-6M-Bsj" secondAttribute="bottom" id="7cp-zF-vGv"/>
+                <constraint firstItem="vnb-Gn-UTf" firstAttribute="top" secondItem="GF4-g1-ap4" secondAttribute="top" id="Cj7-lk-eOu"/>
+                <constraint firstAttribute="bottom" secondItem="Mx0-wp-FJV" secondAttribute="bottom" id="IWE-KH-888"/>
+                <constraint firstItem="vnb-Gn-UTf" firstAttribute="leading" secondItem="Mx0-wp-FJV" secondAttribute="trailing" constant="-140" id="afq-zl-ztK"/>
+                <constraint firstItem="Mx0-wp-FJV" firstAttribute="width" secondItem="GF4-g1-ap4" secondAttribute="width" id="fTr-rT-Dib"/>
+                <constraint firstAttribute="trailing" secondItem="UMc-6M-Bsj" secondAttribute="trailing" id="fYO-lV-JaP"/>
+                <constraint firstAttribute="bottom" secondItem="vnb-Gn-UTf" secondAttribute="bottom" id="iZ8-RY-69J"/>
+                <constraint firstItem="Mx0-wp-FJV" firstAttribute="top" secondItem="GF4-g1-ap4" secondAttribute="top" id="leF-Gj-5a4"/>
+                <constraint firstItem="UMc-6M-Bsj" firstAttribute="leading" secondItem="vnb-Gn-UTf" secondAttribute="trailing" id="qve-md-Ljx"/>
+            </constraints>
+            <size key="customSize" width="287" height="217"/>
+            <point key="canvasLocation" x="-111.5" y="133.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -8,7 +8,11 @@
 
 import UIKit
 
-class TodoAddVC: BaseVC, UITextFieldDelegate {
+class TodoAddVC: BaseVC, UITextFieldDelegate, UIScrollViewDelegate {
+    
+    @IBOutlet weak var gradientBackground: UIView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var todoField: UITextField!
     @IBOutlet weak var categorySelectView: CategorySelectView!
@@ -16,12 +20,23 @@ class TodoAddVC: BaseVC, UITextFieldDelegate {
     @IBOutlet weak var wholeDaySwitch: UISwitch!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
+    
+    @IBOutlet weak var categorySelectViewHeight: NSLayoutConstraint!
+    var categorySelectViewHeightOrigin: CGFloat = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard)))
         todoField.delegate = self
+        scrollView.delegate = self
+        
+        //transparent navigation bar
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
+        navigationBar.isTranslucent = true
+        
+        categorySelectViewHeightOrigin = categorySelectViewHeight.constant
     }
     
     @IBAction func addClicked() {
@@ -58,6 +73,13 @@ class TodoAddVC: BaseVC, UITextFieldDelegate {
                 self.dismiss(animated: true)
             }
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.y
+        
+        categorySelectViewHeight.constant = max(categorySelectViewHeightOrigin - offset, 0)
+        self.view.layoutIfNeeded()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

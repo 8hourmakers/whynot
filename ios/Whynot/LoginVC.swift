@@ -18,7 +18,7 @@ class LoginVC: BaseVC, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loginBtn.addBorder(color: UIColor.white)
+        loginBtn.setBorder(color: UIColor.white)
         closeBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backClicked)))
         
         //hide keyboard when screent tapped

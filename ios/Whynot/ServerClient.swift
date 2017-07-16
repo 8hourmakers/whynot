@@ -12,7 +12,7 @@ class ServerClient {
     static let HOST = "http://8hourmakers.com/whynot/api"
     
     static var token = ""
-    static var categories:[TodoCategoryItem] = []
+    static var categories:[CategoryItem] = []
     
     static func register(userName: String,
                          email: String,
@@ -76,6 +76,7 @@ class ServerClient {
         }
     }
     
+    /*
     static func getMyTodo(keyword: String,
                           category: Int,
                           callback: @escaping ([TodoItem]) -> Void) {
@@ -84,6 +85,26 @@ class ServerClient {
             "search":keyword,
             "category_id":category
         ])
+        
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .get) { (res, json) in
+            if !res.isSuccess() {
+                return
+            }
+            
+            var items:[TodoItem] = []
+            
+            for innerJson in json.arrayValue {
+                items.append(TodoItem(innerJson))
+            }
+            
+            callback(items)
+        }
+    }
+    */
+    
+    static func getSchedules(callback: @escaping ([TodoItem]) -> Void) {
+        let uri = "/todos/schedules/"
+        let json = JSON([:])
         
         HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .get) { (res, json) in
             if !res.isSuccess() {
@@ -121,7 +142,7 @@ class ServerClient {
     }
     
     static func makeTodo(title: String,
-                         category: TodoCategoryItem,
+                         category: CategoryItem,
                          startDate: Date,
                          endDate: Date,
                          repeatDay: Int,
@@ -148,7 +169,7 @@ class ServerClient {
         }
     }
     
-    static func getCategories(callback: (([TodoCategoryItem]) -> Void)? = nil) {
+    static func getCategories(callback: (([CategoryItem]) -> Void)? = nil) {
         let uri = "/categories/"
         let json = JSON([:])
         
@@ -159,7 +180,7 @@ class ServerClient {
             
             self.categories.removeAll()
             for innerJson in json.arrayValue {
-                self.categories.append(TodoCategoryItem(innerJson))
+                self.categories.append(CategoryItem(innerJson))
             }
             
             callback?(self.categories)
