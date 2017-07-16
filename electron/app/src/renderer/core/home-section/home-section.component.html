@@ -1,0 +1,30 @@
+<div class="HomeSection">
+    <div class="TodayDate">
+        <div class="TodayDate__left">
+            <span class="TodayDate__date">{{today | date:'d'}}</span>
+            <div class="TodayDate__meta">
+                <label>{{today | date:'MMM'}}</label>
+                <label>{{today | date:'y'}}</label>
+            </div>
+        </div>
+        <span class="TodayDate__right">{{today | date:'EEEE'}}</span>
+    </div>
+
+    <ul class="TodoList">
+        <li class="TodoList__item">
+            <app-todo-item></app-todo-item>
+        </li>
+
+        <li class="TodoList__item">
+            <app-todo-item></app-todo-item>
+        </li>
+
+        <li class="TodoList__item">
+            <app-todo-item></app-todo-item>
+        </li>
+    </ul>
+
+    <button (click)="openAddTodoModal()" class="HomeSection__addTodoBtn">
+        <img src="images/add-btn@2x.png" />
+    </button>
+</div>

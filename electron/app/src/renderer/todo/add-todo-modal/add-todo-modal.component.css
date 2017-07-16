@@ -1,0 +1,121 @@
+.AddTodoModal {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: #fff;
+}
+
+.AddTodoModal__head {
+    padding: 11px 0;
+    background: linear-gradient(to right, #3fb4fb, #83d1dd);
+}
+
+.AddTodoModal__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px;
+}
+
+.AddTodoModal__flatBtn {
+    padding: 0 10px;
+    font-size: 18px;
+    height: 30px;
+    color: #fff;
+}
+
+.AddTodoModal__flatBtn:disabled {
+    cursor: default;
+    opacity: .5;
+}
+
+.AddTodoModal__category {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 700px;
+    padding: 12px;
+}
+
+.AddTodoModal__memo {
+    position: relative;
+    display: block;
+    padding: 45px 28px;
+    border-bottom: 1px solid rgba(151, 151, 151, 0.35);
+}
+
+.AddTodoModal__memo > input {
+    margin: 0;
+    padding: 0 24px 0 0;
+    width: 100%;
+    height: 45px;
+    font-size: 20px;
+    color: #000;
+    border: none;
+    border-bottom: 2px solid rgba(151, 151, 151, .25);
+    background: transparent;
+    transition: all .2s ease;
+    outline: 0;
+}
+
+.AddTodoModal__memo > input::placeholder {
+    color: rgba(151, 151, 151, .25);
+}
+
+.AddTodoModal__memo > input:focus {
+    border-bottom: 2px solid rgba(151, 151, 151, .5);
+}
+
+.AddTodoModal__memo > button {
+    position: absolute;
+    top: 57px;
+    right: 28px;
+    width: 24px;
+    height: 24px;
+}
+
+.AddTodoModal__memo > button[hidden] {
+    display: none;
+}
+
+.AddTodoModal__memo > button > img {
+    width: 20px;
+    height: 20px;
+}
+
+.AddTodoModal > hr {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(244, 244, 248);
+    border: none;
+    outline: 0;
+}
+
+.CategoryItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px;
+    margin-bottom: 4px;
+    width: 25%;
+}
+
+@media screen and (max-width: 320px) {
+    .CategoryItem {
+        width: 33.33%;
+    }
+}
+
+.CategoryItem > img {
+    margin-bottom: 4px;
+    width: 44px;
+    height: 44px;
+}
+
+.CategoryItem > span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+}

@@ -1,0 +1,26 @@
+<div class="AddTodoModal">
+    <div class="AddTodoModal__head">
+        <div class="AddTodoModal__top">
+            <button (click)="closeModal()" class="AddTodoModal__flatBtn">취소</button>
+            <button disabled class="AddTodoModal__flatBtn">추가</button>
+        </div>
+
+        <div class="AddTodoModal__category">
+            <div *ngFor="let category of categories" class="CategoryItem">
+                <img [src]="'images/' + category.imgSrc" />
+                <span>{{category.name}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="AddTodoModal__memo">
+        <input [(ngModel)]="todoTitle" type="text" placeholder="해야할 일을 적어주세요." />
+        <button (click)="clearInput()" [hidden]="todoTitle == ''">
+            <img src="images/cancel@2x.png" />
+        </button>
+    </div>
+
+    <hr />
+
+    <input type="date" />
+</div>

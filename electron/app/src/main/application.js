@@ -62,7 +62,7 @@ class Application {
                 });
 
                 options = {
-                    width: 320,
+                    width: 360,
                     height: 600,
                     minWidth: 300,
                     minHeight: 480
@@ -77,7 +77,7 @@ class Application {
                 });
 
                 options = {
-                    width: 320,
+                    width: 360,
                     height: 600,
                     minWidth: 300,
                     minHeight: 480
