@@ -361,7 +361,7 @@
 				TargetAttributes = {
 					2702DD8A1EDA78B300A68F74 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 28A4E58A28;
+						DevelopmentTeam = S4YASQNS8W;
 						ProvisioningStyle = Automatic;
 					};
 					2702DD9E1EDA78B300A68F74 = {
@@ -740,10 +740,10 @@
 			baseConfigurationReference = F83B3B3B405B3FC28A261508 /* Pods-Whynot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 28A4E58A28;
+				DEVELOPMENT_TEAM = S4YASQNS8W;
 				INFOPLIST_FILE = Whynot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Noverish.Whynot;
+				PRODUCT_BUNDLE_IDENTIFIER = "-hourmakers.Whynot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -754,10 +754,10 @@
 			baseConfigurationReference = 605EC55152C7F45C7E85F4AD /* Pods-Whynot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 28A4E58A28;
+				DEVELOPMENT_TEAM = S4YASQNS8W;
 				INFOPLIST_FILE = Whynot/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Noverish.Whynot;
+				PRODUCT_BUNDLE_IDENTIFIER = "-hourmakers.Whynot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
