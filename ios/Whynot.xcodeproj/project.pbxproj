@@ -15,7 +15,6 @@
 		2702DDAF1EDA78B300A68F74 /* WhynotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDAE1EDA78B300A68F74 /* WhynotUITests.swift */; };
 		2702DDBD1EDA78C400A68F74 /* ServerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDBC1EDA78C400A68F74 /* ServerClient.swift */; };
 		2702DDBF1EDA795A00A68F74 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDBE1EDA795A00A68F74 /* SwiftyJSON.swift */; };
-		2702DDC11EDA8A0F00A68F74 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDC01EDA8A0F00A68F74 /* Util.swift */; };
 		2702DDC31EDA92C500A68F74 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDC21EDA92C500A68F74 /* TodoItem.swift */; };
 		2702DDC51EDAA1E100A68F74 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */; };
 		27B92D7A1F149777008F2AA9 /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B92D791F149777008F2AA9 /* ListVC.swift */; };
@@ -32,16 +31,15 @@
 		27D107801EDAA9950047355F /* NanumBarunGothicUltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 27D1077C1EDAA9950047355F /* NanumBarunGothicUltraLight.otf */; };
 		27D107821EDAAE2D0047355F /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D107811EDAAE2D0047355F /* ScheduleCell.xib */; };
 		27D107841EDAAE870047355F /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D107831EDAAE870047355F /* ScheduleCell.swift */; };
-		27D107871EDAAF740047355F /* PagingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D107851EDAAF740047355F /* PagingTableView.swift */; };
-		27D107881EDAAF740047355F /* PagingTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D107861EDAAF740047355F /* PagingTableView.xib */; };
+		27D107871EDAAF740047355F /* InfiniteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D107851EDAAF740047355F /* InfiniteTableView.swift */; };
 		27D1078A1EDAAF850047355F /* TodoTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D107891EDAAF850047355F /* TodoTableView.swift */; };
-		27D1078C1EDABDCD0047355F /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D1078B1EDABDCD0047355F /* BaseVC.swift */; };
 		27D1078E1EDAC3DE0047355F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D1078D1EDAC3DE0047355F /* LoginVC.swift */; };
 		27D107901EDAC69E0047355F /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D1078F1EDAC69E0047355F /* SplashVC.swift */; };
 		27D107921EDAC78C0047355F /* TodoAddVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D107911EDAC78C0047355F /* TodoAddVC.swift */; };
 		27E56FA21F19E8BF00018A8C /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E56FA11F19E8BF00018A8C /* CalendarCell.swift */; };
 		27E56FA41F1B040400018A8C /* TodoListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E56FA31F1B040400018A8C /* TodoListCell.xib */; };
 		27E56FA61F1B15D900018A8C /* Values.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E56FA51F1B15D900018A8C /* Values.swift */; };
+		61B585B674E9A036FE17538F /* GlobalUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B5890DCC654F1474E3C738 /* GlobalUtil.swift */; };
 		C05380669BC88CD6C4FDB948 /* Pods_WhynotTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A372C043887F2DCAC4F83BC1 /* Pods_WhynotTests.framework */; };
 		DD23FF28E9B2CE6E6E7C30C3 /* Pods_Whynot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0F736DCB843C9B10D9F927 /* Pods_Whynot.framework */; };
 		DF72B3C2B05DF6F8F088DEC0 /* Pods_WhynotUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C185631DD5A5836F9B55E84D /* Pods_WhynotUITests.framework */; };
@@ -80,7 +78,6 @@
 		2702DDB01EDA78B300A68F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2702DDBC1EDA78C400A68F74 /* ServerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerClient.swift; sourceTree = "<group>"; };
 		2702DDBE1EDA795A00A68F74 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		2702DDC01EDA8A0F00A68F74 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		2702DDC21EDA92C500A68F74 /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		27B92D791F149777008F2AA9 /* ListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
@@ -97,10 +94,8 @@
 		27D1077C1EDAA9950047355F /* NanumBarunGothicUltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumBarunGothicUltraLight.otf; sourceTree = "<group>"; };
 		27D107811EDAAE2D0047355F /* ScheduleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCell.xib; sourceTree = "<group>"; };
 		27D107831EDAAE870047355F /* ScheduleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
-		27D107851EDAAF740047355F /* PagingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingTableView.swift; sourceTree = "<group>"; };
-		27D107861EDAAF740047355F /* PagingTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PagingTableView.xib; sourceTree = "<group>"; };
+		27D107851EDAAF740047355F /* InfiniteTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteTableView.swift; sourceTree = "<group>"; };
 		27D107891EDAAF850047355F /* TodoTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableView.swift; sourceTree = "<group>"; };
-		27D1078B1EDABDCD0047355F /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		27D1078D1EDAC3DE0047355F /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		27D1078F1EDAC69E0047355F /* SplashVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		27D107911EDAC78C0047355F /* TodoAddVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoAddVC.swift; sourceTree = "<group>"; };
@@ -109,6 +104,7 @@
 		27E56FA51F1B15D900018A8C /* Values.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Values.swift; sourceTree = "<group>"; };
 		5C0F736DCB843C9B10D9F927 /* Pods_Whynot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Whynot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		605EC55152C7F45C7E85F4AD /* Pods-Whynot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Whynot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Whynot/Pods-Whynot.release.xcconfig"; sourceTree = "<group>"; };
+		61B5890DCC654F1474E3C738 /* GlobalUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtil.swift; sourceTree = "<group>"; };
 		947E8E3D25DF596DAA371CD2 /* Pods-WhynotUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhynotUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhynotUITests/Pods-WhynotUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A1046EFF527A919B764E22A6 /* Pods-WhynotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhynotTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhynotTests/Pods-WhynotTests.release.xcconfig"; sourceTree = "<group>"; };
 		A372C043887F2DCAC4F83BC1 /* Pods_WhynotTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhynotTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,8 +204,7 @@
 		27B92D811F14AE31008F2AA9 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				27D107851EDAAF740047355F /* PagingTableView.swift */,
-				27D107861EDAAF740047355F /* PagingTableView.xib */,
+				27D107851EDAAF740047355F /* InfiniteTableView.swift */,
 				27B92D821F14AE5B008F2AA9 /* CategorySelectView.swift */,
 				27B92D841F14AE66008F2AA9 /* CategorySelectView.xib */,
 			);
@@ -219,7 +214,6 @@
 		27D107751EDAA2500047355F /* vc */ = {
 			isa = PBXGroup;
 			children = (
-				27D1078B1EDABDCD0047355F /* BaseVC.swift */,
 				27D1078F1EDAC69E0047355F /* SplashVC.swift */,
 				27D1078D1EDAC3DE0047355F /* LoginVC.swift */,
 				2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */,
@@ -238,10 +232,10 @@
 			children = (
 				2702DDBC1EDA78C400A68F74 /* ServerClient.swift */,
 				27E56FA51F1B15D900018A8C /* Values.swift */,
-				2702DDC01EDA8A0F00A68F74 /* Util.swift */,
 				2702DDBE1EDA795A00A68F74 /* SwiftyJSON.swift */,
 				27B92D7F1F14A4DF008F2AA9 /* ColorUtils.swift */,
 				27B92DC01F161E8E008F2AA9 /* GlobalConfig.swift */,
+				61B5890DCC654F1474E3C738 /* GlobalUtil.swift */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -407,7 +401,6 @@
 				27D107801EDAA9950047355F /* NanumBarunGothicUltraLight.otf in Resources */,
 				27D1077D1EDAA9950047355F /* NanumBarunGothic.otf in Resources */,
 				2702DD961EDA78B300A68F74 /* Assets.xcassets in Resources */,
-				27D107881EDAAF740047355F /* PagingTableView.xib in Resources */,
 				27D107821EDAAE2D0047355F /* ScheduleCell.xib in Resources */,
 				2702DD941EDA78B300A68F74 /* Main.storyboard in Resources */,
 				27E56FA41F1B040400018A8C /* TodoListCell.xib in Resources */,
@@ -581,11 +574,9 @@
 				27D107781EDAA5610047355F /* SettingVC.swift in Sources */,
 				2702DDBD1EDA78C400A68F74 /* ServerClient.swift in Sources */,
 				27D1078A1EDAAF850047355F /* TodoTableView.swift in Sources */,
-				2702DDC11EDA8A0F00A68F74 /* Util.swift in Sources */,
 				27B92D831F14AE5B008F2AA9 /* CategorySelectView.swift in Sources */,
 				27D107841EDAAE870047355F /* ScheduleCell.swift in Sources */,
 				2702DD8F1EDA78B300A68F74 /* AppDelegate.swift in Sources */,
-				27D1078C1EDABDCD0047355F /* BaseVC.swift in Sources */,
 				2702DDC51EDAA1E100A68F74 /* RegisterVC.swift in Sources */,
 				27D1078E1EDAC3DE0047355F /* LoginVC.swift in Sources */,
 				2702DDC31EDA92C500A68F74 /* TodoItem.swift in Sources */,
@@ -593,9 +584,10 @@
 				27B92D7E1F1498D4008F2AA9 /* CalendarVC.swift in Sources */,
 				27B92DC11F161E8E008F2AA9 /* GlobalConfig.swift in Sources */,
 				2702DDBF1EDA795A00A68F74 /* SwiftyJSON.swift in Sources */,
-				27D107871EDAAF740047355F /* PagingTableView.swift in Sources */,
+				27D107871EDAAF740047355F /* InfiniteTableView.swift in Sources */,
 				27E56FA61F1B15D900018A8C /* Values.swift in Sources */,
 				27D107901EDAC69E0047355F /* SplashVC.swift in Sources */,
+				61B585B674E9A036FE17538F /* GlobalUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

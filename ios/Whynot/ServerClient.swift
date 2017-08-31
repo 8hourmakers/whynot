@@ -220,8 +220,8 @@ class HttpUtil {
                 return
             }
             
-            let res = String(data:data!, encoding:String.Encoding.utf8)!
-            print("<HTTP> \(url) : \(json.rawValue) -> \(res)\n\n")
+//            let res = String(data:data!, encoding:String.Encoding.utf8)!
+            print("<HTTP> \(httpMethod) : \(url) - \(json.rawValue)\n")
             
             callback(response, JSON(data!))
         }

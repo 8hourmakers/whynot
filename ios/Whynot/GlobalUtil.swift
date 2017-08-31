@@ -1,9 +1,9 @@
 //
-//  Util.swift
-//  Whynot
+//  GlobalUtil.swift
 //
-//  Created by Noverish Harold on 2017. 5. 28..
-//  Copyright © 2017년 Noverish Harold. All rights reserved.
+//  Created by Noverish Harold on 2017.5.28..
+//  Copyright © 2017년 Noverish. All rights reserved.
+//  https://gist.github.com/Noverish/f16c1c7e780e675bca7bc1e6079159d2
 //
 
 import Foundation
@@ -28,43 +28,43 @@ extension UIView {
                    color:UIColor = UIColor.black,
                    offset:CGSize = CGSize.zero,
                    opacity:Float = 0.5) {
-        
+
         self.layer.shadowRadius = CGFloat(radius)
         self.layer.shadowColor = color.cgColor
         self.layer.shadowOffset = offset
         self.layer.shadowOpacity = opacity
     }
-    
+
     /*
-    func addShadow() {
-        self.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.3).cgColor
-        self.layer.shadowOpacity = 1
-        self.layer.shadowOffset = CGSize.zero
-        self.layer.shadowRadius = 2
-    }
-    */
-    
+     func addShadow() {
+     self.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.3).cgColor
+     self.layer.shadowOpacity = 1
+     self.layer.shadowOffset = CGSize.zero
+     self.layer.shadowRadius = 2
+     }
+     */
+
     func setBorder(width: CGFloat = 1,
                    color: UIColor = UIColor.black) {
         self.layer.borderWidth = width
         self.layer.borderColor = color.cgColor
     }
-    
+
     func setGradient(colors:[UIColor] = [UIColor.white, UIColor.black],
                      startPoint: CGPoint = CGPoint(0, 0),
                      endPoint: CGPoint = CGPoint(1, 1),
                      cornerRadius: CGFloat = 0) {
-        
+
         let gradientLayer1 = CAGradientLayer()
         gradientLayer1.frame = self.bounds
         gradientLayer1.colors = colors.map { $0.cgColor }
         gradientLayer1.cornerRadius = cornerRadius
         gradientLayer1.startPoint = startPoint
         gradientLayer1.endPoint = endPoint
-        
+
         self.layer.addSublayer(gradientLayer1)
     }
-    
+
     func updateLayers() {
         self.layer.sublayers?.forEach {
             $0.frame = self.frame
@@ -90,10 +90,43 @@ extension UIViewController {
             toastLabel.removeFromSuperview()
         })
     }
+
+    func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+
+    func dismissWithAnimation() {
+        self.dismiss(animated: true)
+    }
+
+    func dismissWithoutAnimation() {
+        self.dismiss(animated: false)
+    }
+
+    func showAlertView(title: String,
+                       msg: String,
+                       preferredStyle: UIAlertControllerStyle = .alert,
+                       actions: [UIAlertAction] = []) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: preferredStyle)
+
+        for action in actions {
+            alert.addAction(action)
+        }
+
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 //https://stackoverflow.com/a/43664156
 extension Date {
+    init(year: Int, month: Int, day: Int) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Calendar.current.locale
+        formatter.timeZone = Calendar.current.timeZone
+        self.init(timeInterval: 0, since: formatter.date(from: "\(year)-\(month)-\(day)")!)
+    }
+
     func isInSameDay(_ date: Date) -> Bool {
         return Calendar.current.isDate(self, equalTo: date, toGranularity: .day)
     }
@@ -115,26 +148,76 @@ extension Date {
     var isInThisWeek: Bool {
         return isInSameWeek(Date())
     }
+
+    var day: Int {
+        return Calendar.current.dateComponents([.day], from: self).day!
+    }
+    var month: Int {
+        return Calendar.current.dateComponents([.month], from: self).month!
+    }
+    var year: Int {
+        return Calendar.current.dateComponents([.year], from: self).year!
+    }
+    var monthStr: String {
+        return monthStr(locale: Locale.current)
+    }
+    var dayOfWeek: String {
+        return dayOfWeek(locale: Locale.current)
+    }
+
+    func monthStr(locale: Locale) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = locale
+        return dateFormatter.monthSymbols[self.month - 1]
+    }
+
+    func dayOfWeek(locale: Locale) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        dateFormatter.locale = locale
+        return dateFormatter.string(from: self)
+    }
+
+    func toString(format: String) -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.locale = Calendar.current.locale
+        formatter.timeZone = Calendar.current.timeZone
+        return formatter.string(from: self)
+    }
 }
 
 extension UIColor {
     convenience init(r: Int, g: Int, b: Int, a:Int = 255) {
         self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: CGFloat(a)/255)
     }
-    
-    convenience init(rgb: Int) {
+
+    convenience init(argb: Int) {
+        var alpha:Int = argb >> 24
+        if alpha == 0 {
+            alpha = 255
+        }
+
         self.init(
-            r: (rgb >> 16) & 0xFF,
-            g: (rgb >> 8) & 0xFF,
-            b: rgb & 0xFF
+                r: (argb >> 16) & 0xFF,
+                g: (argb >> 8) & 0xFF,
+                b: argb & 0xFF,
+                a: alpha
         )
+    }
+
+    convenience init(rgbString: String) {
+        let rgbString = rgbString.replacingOccurrences(of: "#", with: "")
+        let rgb = Int(rgbString, radix:16)!
+
+        self.init(argb: rgb)
     }
 
     convenience init(gray: Int) {
         self.init(
-            r: gray,
-            g: gray,
-            b: gray
+                r: gray,
+                g: gray,
+                b: gray
         )
     }
 }
@@ -154,23 +237,5 @@ extension CGSize {
 extension CGRect {
     mutating func changeHeight(_ height: CGFloat) {
         self.size = CGSize(self.width, height)
-    }
-}
-
-extension Date {
-    init(year: Int, month: Int, day: Int) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        formatter.locale = Calendar.current.locale
-        formatter.timeZone = Calendar.current.timeZone
-        self.init(timeInterval: 0, since: formatter.date(from: "\(year)-\(month)-\(day)")!)
-    }
-    
-    func toString(format: String) -> String{
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        formatter.locale = Calendar.current.locale
-        formatter.timeZone = Calendar.current.timeZone
-        return formatter.string(from: self)
     }
 }

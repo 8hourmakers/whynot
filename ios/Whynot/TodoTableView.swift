@@ -9,40 +9,33 @@
 import Foundation
 import UIKit
 
-class TodoTableView: PagingTableView, PagingTableViewDelegate, PagingTableViewDataSource {
-    func initialize(nowVC: UIViewController) {
-        super.columnNum = 1
-        super.sectionInset = CGFloat(0)
-        super.itemSpacing = CGFloat(16)
+class TodoTableView: InfiniteTableView, InfiniteTableViewDelegate, InfiniteTableViewDataSource {
+
+    func initiate() {
         super.delegate = self
-        super.initialize(nowVC: nowVC, dataSource: self)
+        super.collectionViewFlowLayout.minimumLineSpacing = CGFloat(16)
+        super.initiate(nibName: String(describing: ScheduleCell.self), dataSource: self)
     }
-    
-    func setItem(cell: UICollectionViewCell, item: Any) -> UICollectionViewCell {
+
+    func infiniteTableView(_ infiniteTableView: InfiniteTableView, set cell: UICollectionViewCell, for item: Any) -> UICollectionViewCell {
         if let cell = cell as? ScheduleCell {
             if let item = item as? TodoItem {
                 cell.setItem(item)
             }
         }
-        
+
         return cell
     }
-    
-    func loadMoreItems(page: Int, callback: @escaping ([Any]) -> Void) {
+
+    func infiniteTableView(_ infiniteTableView: InfiniteTableView, itemsOn page: Int, callback: @escaping ([Any]) -> Void) {
+        if(page > 1) {
+            callback([Any]())
+            return
+        }
+
         ServerClient.getSchedules() { (schedules) in
             callback(schedules)
         }
     }
-    
-    func getNibName() -> String {
-        return String(describing: ScheduleCell.self)
-    }
-    
-    func didSelected(item: Any) {
-        
-    }
-    
-    func calcHeight(width:CGFloat, item:Any) -> CGFloat {
-        return CGFloat(50)
-    }
+
 }

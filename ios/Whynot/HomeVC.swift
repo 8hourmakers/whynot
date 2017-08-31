@@ -8,18 +8,24 @@
 
 import UIKit
 
-class HomeVC: BaseVC {
+class HomeVC: UIViewController {
 
     @IBOutlet weak var todoTableView:TodoTableView!
-    
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var dayOfWeekLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let today = Date()
+        dayLabel.text = String(today.day)
+        monthLabel.text = today.monthStr(locale: Locale(identifier: "en_US"))
+        yearLabel.text = String(today.year)
+        dayOfWeekLabel.text = today.dayOfWeek(locale: Locale(identifier: "en_US"))
         
-        ServerClient.getCategories() { categories in
-            DispatchQueue.main.async {
-                self.todoTableView.initialize(nowVC:self)
-            }
-        }
+        todoTableView.initiate()
     }
 
     override func didReceiveMemoryWarning() {

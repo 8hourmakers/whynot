@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoAddVC: BaseVC, UITextFieldDelegate, UIScrollViewDelegate {
+class TodoAddVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var gradientBackground: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!

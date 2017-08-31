@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterVC: BaseVC, UITextFieldDelegate {
+class RegisterVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var closeBtn: UIView!
     @IBOutlet weak var userNameField: UITextField!
@@ -20,7 +20,7 @@ class RegisterVC: BaseVC, UITextFieldDelegate {
         super.viewDidLoad()
         
         registerBtn.setBorder(color: UIColor.white)
-        closeBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backClicked)))
+        closeBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissWithAnimation)))
         
         //hide keyboard when screent tapped
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))

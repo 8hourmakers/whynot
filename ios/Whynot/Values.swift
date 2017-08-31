@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static let mainColor = UIColor(rgb: 0x3FB4FB)
+    static let mainColor = UIColor(argb: 0x3FB4FB)
 }
 
 extension UIFont {

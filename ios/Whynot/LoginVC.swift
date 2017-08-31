@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginVC: BaseVC, UITextFieldDelegate {
+class LoginVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var closeBtn: UIView!
     @IBOutlet weak var emailField: UITextField!
@@ -19,7 +19,7 @@ class LoginVC: BaseVC, UITextFieldDelegate {
         super.viewDidLoad()
 
         loginBtn.setBorder(color: UIColor.white)
-        closeBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backClicked)))
+        closeBtn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissWithAnimation)))
         
         //hide keyboard when screent tapped
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
@@ -27,6 +27,8 @@ class LoginVC: BaseVC, UITextFieldDelegate {
         //added return button clicked listener
         emailField.delegate = self
         passwordField.delegate = self
+
+        emailField.becomeFirstResponder()
     }
     
     @IBAction func loginClicked() {

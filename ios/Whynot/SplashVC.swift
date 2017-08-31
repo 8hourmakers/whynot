@@ -16,7 +16,9 @@ class SplashVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        ServerClient.getCategories()
+
         DispatchQueue.main.asyncAfter(deadline: .now() + GlobalConfig.SPLASH_DURATION) {
             if self.autoLoginDone {
                 self.process()
@@ -26,7 +28,7 @@ class SplashVC: UIViewController {
         }
 
         if let email = UserDefaults.standard.string(forKey: GlobalConfig.USER_DEFAULT_EMAIL),
-            let password = UserDefaults.standard.string(forKey: GlobalConfig.USER_DEFAULT_PASSWORD) {
+           let password = UserDefaults.standard.string(forKey: GlobalConfig.USER_DEFAULT_PASSWORD) {
             
             ServerClient.login(email: email, password: password) { success in
                 self.loginSuccess = success

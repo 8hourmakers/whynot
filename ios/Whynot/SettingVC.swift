@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingVC: BaseVC {
+class SettingVC: UIViewController {
     
     @IBOutlet weak var announce: UIView!
     @IBOutlet weak var login: UIView!
