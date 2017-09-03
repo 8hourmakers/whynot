@@ -35,15 +35,6 @@ extension UIView {
         self.layer.shadowOpacity = opacity
     }
 
-    /*
-     func addShadow() {
-     self.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.3).cgColor
-     self.layer.shadowOpacity = 1
-     self.layer.shadowOffset = CGSize.zero
-     self.layer.shadowRadius = 2
-     }
-     */
-
     func setBorder(width: CGFloat = 1,
                    color: UIColor = UIColor.black) {
         self.layer.borderWidth = width

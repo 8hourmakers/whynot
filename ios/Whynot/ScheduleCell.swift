@@ -15,29 +15,57 @@ class ScheduleCell: UICollectionViewCell {
     
     @IBOutlet weak var root:UIView!
     @IBOutlet weak var bg:UIView!
-    @IBOutlet weak var status:UIView!
-    
     @IBOutlet weak var title: UILabel!
-    
+    @IBOutlet weak var check: UIImageView!
+
+    var item: TodoItem?
+
     override func awakeFromNib() {
-        status.layer.shadowColor = ScheduleCell.shadowColor.cgColor
-        status.layer.shadowOpacity = 1
-        status.layer.shadowOffset = CGSize.zero
-        status.layer.shadowRadius = 2
-        status.layer.cornerRadius = 15
-        
-//        root.layer.cornerRadius = 25
-//        root.layer.masksToBounds = false
-//        root.layer.shadowColor = TodoCell.shadowColor.cgColor
-//        root.layer.shadowOpacity = 1
-//        root.layer.shadowOffset = CGSize.zero
-//        root.layer.shadowRadius = 5
-        
-        
-        bg.makeGradientBackground()
+        DispatchQueue.main.async {
+            self.bg.setShadow(radius: 5, offset: CGSize(2, 2), opacity: 0.2)
+        }
     }
     
     func setItem(_ item: TodoItem) {
+        self.item = item
+
+        let isAllDone = item.schedules.reduce(true) { $0 && ($1.status == .complete) }
+        if isAllDone {
+            drawAsComplete(item)
+        } else {
+            drawAsTodo(item)
+        }
+    }
+
+    private func drawAsComplete(_ item: TodoItem) {
+        bg.setGradient(colors: [UIColor.white, UIColor.white], cornerRadius: 25)
+        check.isHidden = false
+
+        let textColor = UIColor(r: 197, g:197, b: 197)
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: item.title)
+        attributeString.addAttribute(NSStrikethroughStyleAttributeName, value: 2, range: NSMakeRange(0, attributeString.length))
+        attributeString.addAttribute(NSForegroundColorAttributeName, value: textColor, range: NSMakeRange(0, attributeString.length))
+        title.attributedText = attributeString
+    }
+    
+    private func drawAsTodo(_ item: TodoItem) {
+        bg.setGradient(colors: [ScheduleCell.color1, ScheduleCell.color2], cornerRadius: 25)
+        check.isHidden = true
         title.text = item.title
+    }
+
+    public func doneSchedule() {
+        guard let item = item else {
+            return
+        }
+
+        for schedule in item.schedules {
+            schedule.status = .complete
+            ServerClient.completeSchedule(scheduleId: schedule.id)
+        }
+
+        DispatchQueue.main.async {
+            self.drawAsComplete(item)
+        }
     }
 }

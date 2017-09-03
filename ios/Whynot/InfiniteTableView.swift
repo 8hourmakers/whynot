@@ -3,6 +3,7 @@
 //
 //  Created by Noverish Harold on 2017. 5. 13..
 //  Copyright © 2017년 Noverish. All rights reserved.
+//  https://gist.github.com/Noverish/82b9cbb6a091bcbf4ff22ca0921c726d
 //
 
 import UIKit

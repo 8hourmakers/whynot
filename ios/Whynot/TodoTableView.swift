@@ -13,7 +13,8 @@ class TodoTableView: InfiniteTableView, InfiniteTableViewDelegate, InfiniteTable
 
     func initiate() {
         super.delegate = self
-        super.collectionViewFlowLayout.minimumLineSpacing = CGFloat(16)
+        super.collectionViewFlowLayout.minimumLineSpacing = CGFloat(0)
+        super.collectionView.showsVerticalScrollIndicator = false
         super.initiate(nibName: String(describing: ScheduleCell.self), dataSource: self)
     }
 
@@ -38,4 +39,7 @@ class TodoTableView: InfiniteTableView, InfiniteTableViewDelegate, InfiniteTable
         }
     }
 
+    @objc func infiniteTableView(_ infiniteTableView: InfiniteTableView, didSelectItemAt indexPath: IndexPath, item: Any, cell: UICollectionViewCell) {
+        EventBus.post(event: .scheduleClicked, data: cell)
+    }
 }

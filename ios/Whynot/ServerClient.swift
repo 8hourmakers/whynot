@@ -120,6 +120,15 @@ class ServerClient {
             callback(items)
         }
     }
+
+    static func completeSchedule(scheduleId: Int, callback: ((Void) -> Void)? = nil) {
+        let uri = "/todos/schedules/\(scheduleId)/done/"
+        let json = JSON([:])
+
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .post) { (res, json) in
+            callback?()
+        }
+    }
     
     static func getRcmdTodo(categoryId: Int,
                             callback: @escaping ([TodoItem]) -> Void) {

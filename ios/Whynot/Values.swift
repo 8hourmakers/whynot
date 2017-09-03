@@ -20,13 +20,6 @@ extension UIFont {
     static let nanumUltraLight = UIFont (name: "NanumBarunGothicOTFUltraLight", size: 10)!
 }
 
-extension UIView {
-    func makeGradientBackground() {
-        self.setGradient(colors: [ScheduleCell.color1, ScheduleCell.color2],
-                         cornerRadius: 25)
-    }
-}
-
 class CustomGradientView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)

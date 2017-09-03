@@ -226,6 +226,12 @@
                                         <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="deviceRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfG-O5-iDL">
+                                        <rect key="frame" x="82" y="56" width="33" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="NanumBarunGothicOTF" family="NanumBarunGothicOTF" pointSize="14"/>
+                                        <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xpp-KU-Qf0">
                                         <rect key="frame" x="297.5" y="49" width="55.5" height="19"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicOTF" family="NanumBarunGothicOTF" pointSize="16"/>
@@ -233,10 +239,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLv-Bx-fnc" customClass="TodoTableView" customModule="Whynot" customModuleProvider="target">
-                                        <rect key="frame" x="22.5" y="101" width="330" height="495"/>
+                                        <rect key="frame" x="12.5" y="91" width="350" height="505"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="330" id="Sni-6g-WYV"/>
+                                            <constraint firstAttribute="width" constant="350" id="Sni-6g-WYV"/>
+                                        </constraints>
+                                    </view>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PRA-Zy-BR3">
+                                        <rect key="frame" x="0.0" y="396" width="375" height="200"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="982-yG-WYo"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Et-SM-xiU">
@@ -250,18 +263,13 @@
                                             <action selector="addClicked" destination="D3q-Ub-6aQ" eventType="touchUpInside" id="zkf-5e-iHz"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AfG-O5-iDL">
-                                        <rect key="frame" x="82" y="56.5" width="33" height="16.5"/>
-                                        <fontDescription key="fontDescription" name="NanumBarunGothicOTF" family="NanumBarunGothicOTF" pointSize="14"/>
-                                        <color key="textColor" red="0.2784313725" green="0.2784313725" blue="0.2784313725" alpha="1" colorSpace="deviceRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="1Et-SM-xiU" firstAttribute="centerX" secondItem="ZgB-EZ-L3B" secondAttribute="centerX" id="18m-Uc-FGz"/>
+                                    <constraint firstAttribute="trailing" secondItem="PRA-Zy-BR3" secondAttribute="trailing" id="3MC-Kc-h83"/>
                                     <constraint firstItem="wof-gm-pzY" firstAttribute="leading" secondItem="5CT-LU-rjp" secondAttribute="trailing" constant="10" id="EOd-xj-2DG"/>
-                                    <constraint firstItem="uLv-Bx-fnc" firstAttribute="top" secondItem="5CT-LU-rjp" secondAttribute="bottom" constant="20" id="EiJ-ka-ra6"/>
+                                    <constraint firstItem="uLv-Bx-fnc" firstAttribute="top" secondItem="5CT-LU-rjp" secondAttribute="bottom" constant="10" id="EiJ-ka-ra6"/>
                                     <constraint firstItem="uLv-Bx-fnc" firstAttribute="centerX" secondItem="ZgB-EZ-L3B" secondAttribute="centerX" id="Hmo-AT-0Ww"/>
                                     <constraint firstItem="5CT-LU-rjp" firstAttribute="leading" secondItem="ZgB-EZ-L3B" secondAttribute="leading" constant="25" id="Q4l-H5-EO5"/>
                                     <constraint firstItem="wof-gm-pzY" firstAttribute="top" secondItem="5CT-LU-rjp" secondAttribute="top" id="TYr-Yr-1zt"/>
@@ -270,7 +278,9 @@
                                     <constraint firstItem="AfG-O5-iDL" firstAttribute="bottom" secondItem="5CT-LU-rjp" secondAttribute="bottom" constant="-8" id="bW3-5r-qpx"/>
                                     <constraint firstAttribute="trailing" secondItem="Xpp-KU-Qf0" secondAttribute="trailing" constant="22" id="ftD-bf-mcS"/>
                                     <constraint firstItem="5CT-LU-rjp" firstAttribute="top" secondItem="ZgB-EZ-L3B" secondAttribute="top" constant="35" id="k7R-fP-4vA"/>
+                                    <constraint firstAttribute="bottom" secondItem="PRA-Zy-BR3" secondAttribute="bottom" id="mKi-it-Aym"/>
                                     <constraint firstItem="AfG-O5-iDL" firstAttribute="leading" secondItem="5CT-LU-rjp" secondAttribute="trailing" constant="10" id="t0Q-Gr-S4m"/>
+                                    <constraint firstItem="PRA-Zy-BR3" firstAttribute="leading" secondItem="ZgB-EZ-L3B" secondAttribute="leading" id="v0S-jk-XdW"/>
                                     <constraint firstItem="Xpp-KU-Qf0" firstAttribute="centerY" secondItem="5CT-LU-rjp" secondAttribute="centerY" id="zEW-Wd-xB2"/>
                                 </constraints>
                             </view>
@@ -286,6 +296,7 @@
                     <connections>
                         <outlet property="dayLabel" destination="5CT-LU-rjp" id="taL-Xf-a0U"/>
                         <outlet property="dayOfWeekLabel" destination="Xpp-KU-Qf0" id="ne7-TM-Fhp"/>
+                        <outlet property="gradientView" destination="PRA-Zy-BR3" id="v0I-kk-Kis"/>
                         <outlet property="monthLabel" destination="wof-gm-pzY" id="Kjh-qh-mAL"/>
                         <outlet property="todoTableView" destination="uLv-Bx-fnc" id="l6x-FL-nnL"/>
                         <outlet property="yearLabel" destination="AfG-O5-iDL" id="RR1-fL-aDU"/>
@@ -294,7 +305,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SRY-gE-YHM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="-657"/>
+            <point key="canvasLocation" x="776.79999999999995" y="-657.57121439280365"/>
         </scene>
         <!--SettingVC-->
         <scene sceneID="ang-i0-ZXB">
@@ -1202,7 +1213,7 @@
                                         <color key="backgroundColor" red="0.2470588235" green="0.70588235290000001" blue="0.98431372549999996" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234.56" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOQ-4g-oeM">
-                                        <rect key="frame" x="146.5" y="20" width="83.5" height="25.5"/>
+                                        <rect key="frame" x="146" y="19.5" width="83.5" height="25.5"/>
                                         <fontDescription key="fontDescription" name="NanumBarunGothicOTF" family="NanumBarunGothicOTF" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
