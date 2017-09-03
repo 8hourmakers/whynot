@@ -17,8 +17,7 @@ class ScheduleCell: UICollectionViewCell {
     @IBOutlet weak var bg:UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var check: UIImageView!
-
-    var item: TodoItem?
+    var item: TodoItem!
 
     override func awakeFromNib() {
         DispatchQueue.main.async {
@@ -31,13 +30,13 @@ class ScheduleCell: UICollectionViewCell {
 
         let isAllDone = item.schedules.reduce(true) { $0 && ($1.status == .complete) }
         if isAllDone {
-            drawAsComplete(item)
+            drawAsComplete()
         } else {
-            drawAsTodo(item)
+            drawAsTodo()
         }
     }
 
-    private func drawAsComplete(_ item: TodoItem) {
+    private func drawAsComplete() {
         bg.setGradient(colors: [UIColor.white, UIColor.white], cornerRadius: 25)
         check.isHidden = false
 
@@ -48,24 +47,20 @@ class ScheduleCell: UICollectionViewCell {
         title.attributedText = attributeString
     }
     
-    private func drawAsTodo(_ item: TodoItem) {
+    private func drawAsTodo() {
         bg.setGradient(colors: [ScheduleCell.color1, ScheduleCell.color2], cornerRadius: 25)
         check.isHidden = true
         title.text = item.title
     }
 
     public func doneSchedule() {
-        guard let item = item else {
-            return
-        }
-
         for schedule in item.schedules {
             schedule.status = .complete
             ServerClient.completeSchedule(scheduleId: schedule.id)
         }
 
         DispatchQueue.main.async {
-            self.drawAsComplete(item)
+            self.drawAsComplete()
         }
     }
 }

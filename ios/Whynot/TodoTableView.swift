@@ -1,31 +1,16 @@
 //
-//  TodoTableView.swift
-//  Whynot
-//
-//  Created by Noverish Harold on 2017. 5. 28..
-//  Copyright © 2017년 Noverish Harold. All rights reserved.
+// Created by Noverish Harold on 2017. 9. 3..
+// Copyright (c) 2017 Noverish Harold. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class TodoTableView: InfiniteTableView, InfiniteTableViewDelegate, InfiniteTableViewDataSource {
-
     func initiate() {
         super.delegate = self
         super.collectionViewFlowLayout.minimumLineSpacing = CGFloat(0)
         super.collectionView.showsVerticalScrollIndicator = false
-        super.initiate(nibName: String(describing: ScheduleCell.self), dataSource: self)
-    }
-
-    func infiniteTableView(_ infiniteTableView: InfiniteTableView, set cell: UICollectionViewCell, for item: Any) -> UICollectionViewCell {
-        if let cell = cell as? ScheduleCell {
-            if let item = item as? TodoItem {
-                cell.setItem(item)
-            }
-        }
-
-        return cell
+        super.initiate(nibName: String(describing: TodoListCell.self), dataSource: self)
     }
 
     func infiniteTableView(_ infiniteTableView: InfiniteTableView, itemsOn page: Int, callback: @escaping ([Any]) -> Void) {
@@ -34,12 +19,20 @@ class TodoTableView: InfiniteTableView, InfiniteTableViewDelegate, InfiniteTable
             return
         }
 
-        ServerClient.getSchedules() { (schedules) in
-            callback(schedules)
+        ServerClient.getSchedules() { (todos) in
+            callback(todos)
+            EventBus.post(event: .todoListLoaded, data: todos.count)
         }
     }
 
-    @objc func infiniteTableView(_ infiniteTableView: InfiniteTableView, didSelectItemAt indexPath: IndexPath, item: Any, cell: UICollectionViewCell) {
-        EventBus.post(event: .scheduleClicked, data: cell)
+    func infiniteTableView(_ infiniteTableView: InfiniteTableView, set cell: UICollectionViewCell, for item: Any) -> UICollectionViewCell {
+        if let cell = cell as? TodoListCell {
+            if let item = item as? TodoItem {
+                cell.setItem(item)
+            }
+        }
+
+        return cell
     }
+
 }

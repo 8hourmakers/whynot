@@ -19,5 +19,9 @@ class EventBus {
 
     enum Event:String {
         case scheduleClicked = "scheduleClicked"
+        case todoCellModifyClicked = "todoCellModifyClicked"
+        case todoCellDeleteClicked = "todoDeleteClicked"
+        case todoCellExpanded = "todoCellExpanded"
+        case todoListLoaded = "todoListLoaded"
     }
 }

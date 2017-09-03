@@ -6,7 +6,7 @@
 //  Copyright © 2017년 Noverish Harold. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class TodoItem {
     var id: Int
@@ -18,6 +18,8 @@ class TodoItem {
     var memo: String
     var alarmMinute: Int
     var category: CategoryItem
+
+    var expanded: Bool = false //cell related property
     
     init(_ json: JSON) {
         id = json["id"].intValue
@@ -46,34 +48,28 @@ class CategoryItem {
         name = json["name"].stringValue
         imgUrl = json["image"].stringValue
     }
-}
-
-class ScheduleItem {
-    var id: Int
-    var date: Date
-    var status: ScheduleItem.Status
     
-    init(_ json: JSON) {
-        id = json["id"].intValue
-        date = GlobalDateFrmatter.date(from: json["datetime"].stringValue)!
-        status = ScheduleItem.Status.extract(json["status"].stringValue)!
-    }
-    
-    enum Status {
-        case uncomplete
-        case todo
-        case complete
-        
-        static func extract(_ str: String) -> ScheduleItem.Status? {
-            switch str {
-            case "UNCOMPLETE":
-                return .uncomplete
-            case "TODO":
-                return .todo
-            case "COMPLETE":
-                return .complete
+    var icon:UIImage {
+        get {
+            switch id {
+            case 1:
+                return UIImage(named: "categoryBeautyOff")!
+            case 3:
+                return UIImage(named: "categoryFinanceOff")!
+            case 4:
+                return UIImage(named: "categoryFriendOff")!
+            case 5:
+                return UIImage(named: "categoryExersizeOff")!
+            case 6:
+                return UIImage(named: "categoryStudyOff")!
+            case 7:
+                return UIImage(named: "categoryHealthOff")!
+            case 8:
+                return UIImage(named: "categoryLivingOff")!
+            case 9:
+                return UIImage(named: "categoryEtcOff")!
             default:
-                return nil
+                return UIImage(named: "categoryEtcOff")!
             }
         }
     }

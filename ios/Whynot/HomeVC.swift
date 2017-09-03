@@ -10,7 +10,7 @@ import UIKit
 
 class HomeVC: UIViewController {
 
-    @IBOutlet weak var todoTableView:TodoTableView!
+    @IBOutlet weak var todoTableView: ScheduleTableView!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
