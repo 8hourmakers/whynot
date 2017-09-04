@@ -17,7 +17,7 @@ class TodoItem {
     var schedules: [ScheduleItem]
     var memo: String
     var alarmMinute: Int
-    var category: CategoryItem
+    var category: Category
 
     var expanded: Bool = false //cell related property
     
@@ -29,7 +29,7 @@ class TodoItem {
         repeatDay = json["repeat_day"].intValue
         memo = json["memo"].stringValue
         alarmMinute = json["alarm_minutes"].intValue
-        category = CategoryItem(json["category"])
+        category = Category.parse(from: json["category"]["id"].intValue)!
         
         schedules = []
         for innerJson in json["schedules"].arrayValue {
@@ -37,41 +37,3 @@ class TodoItem {
         }
     }
 }
-
-class CategoryItem {
-    var id: Int
-    var name: String
-    var imgUrl: String
-    
-    init(_ json: JSON) {
-        id = json["id"].intValue
-        name = json["name"].stringValue
-        imgUrl = json["image"].stringValue
-    }
-    
-    var icon:UIImage {
-        get {
-            switch id {
-            case 1:
-                return UIImage(named: "categoryBeautyOff")!
-            case 3:
-                return UIImage(named: "categoryFinanceOff")!
-            case 4:
-                return UIImage(named: "categoryFriendOff")!
-            case 5:
-                return UIImage(named: "categoryExersizeOff")!
-            case 6:
-                return UIImage(named: "categoryStudyOff")!
-            case 7:
-                return UIImage(named: "categoryHealthOff")!
-            case 8:
-                return UIImage(named: "categoryLivingOff")!
-            case 9:
-                return UIImage(named: "categoryEtcOff")!
-            default:
-                return UIImage(named: "categoryEtcOff")!
-            }
-        }
-    }
-}
-

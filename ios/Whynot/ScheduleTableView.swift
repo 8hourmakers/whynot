@@ -49,4 +49,14 @@ class ScheduleTableView: InfiniteTableView, InfiniteTableViewDelegate, InfiniteT
             EventBus.post(event: .scheduleClicked, data: cell)
         }
     }
+
+    func infiniteTableView(_ infiniteTableView: InfiniteTableView, item lhs: Any, isEqualTo rhs: Any) -> Bool {
+        guard let lhs = lhs as? TodoItem,
+              let rhs = rhs as? TodoItem else {
+            return false
+        }
+
+        return lhs.id == rhs.id
+    }
+
 }

@@ -130,6 +130,33 @@ class InfiniteTableView: UIView, UICollectionViewDataSource, UICollectionViewDel
         collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
 
+    public func insertItem(_ item: Any) {
+        items.append(item)
+        collectionView.reloadData()
+    }
+
+    public func modifyItem(_ item: Any) {
+        guard let index = items.index(where: {
+            dataSource.infiniteTableView(self, item: $0, isEqualTo: item)
+        }) else {
+            return
+        }
+
+        items[index] = item
+        collectionView.reloadData()
+    }
+
+    public func deleteItem(_ item: Any) {
+        guard let index = items.index(where: {
+            dataSource.infiniteTableView(self, item: $0, isEqualTo: item)
+        }) else {
+            return
+        }
+
+        items.remove(at: index)
+        collectionView.reloadData()
+    }
+
     //[DataSource] start
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.items.count
@@ -251,6 +278,7 @@ class InfiniteTableView: UIView, UICollectionViewDataSource, UICollectionViewDel
 @objc protocol InfiniteTableViewDataSource: class {
     func infiniteTableView(_ infiniteTableView: InfiniteTableView, itemsOn page: Int, callback: @escaping ([Any]) -> Void)
     func infiniteTableView(_ infiniteTableView: InfiniteTableView, set cell: UICollectionViewCell, for item: Any) -> UICollectionViewCell
+    func infiniteTableView(_ infiniteTableView: InfiniteTableView, item lhs: Any, isEqualTo rhs: Any) -> Bool
     @objc optional func infiniteTableView(numberOfColumnsOf infiniteTableView: InfiniteTableView) -> Int
     @objc optional func infiniteTableView(_ infiniteTableView: InfiniteTableView, cellHeightOf item: Any, cellWidth: CGFloat) -> CGFloat
 }

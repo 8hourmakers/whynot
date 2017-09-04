@@ -31,6 +31,7 @@ class TodoListCell: UICollectionViewCell {
         self.addGestureRecognizer(right)
 
         EventBus.register(self, event: .todoCellExpanded, action: #selector(otherTodoCellExpanded))
+        EventBus.register(self, event: .todoModified, action: #selector(todoModified))
 
         if(item.expanded) {
             self.expand(animated: false)
@@ -47,12 +48,22 @@ class TodoListCell: UICollectionViewCell {
         EventBus.post(event: .todoCellDeleteClicked, data: item)
     }
 
-    func otherTodoCellExpanded(_ notification: Notification) {
+    @objc private func otherTodoCellExpanded(_ notification: Notification) {
         guard let item = notification.object as? TodoItem else {
             return
         }
 
         if(self.item.id != item.id) {
+            shrink()
+        }
+    }
+
+    @objc private func todoModified(_ notification: Notification) {
+        guard let item = notification.object as? TodoItem else {
+            return
+        }
+
+        if(self.item.id == item.id) {
             shrink()
         }
     }

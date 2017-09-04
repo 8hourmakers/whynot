@@ -23,5 +23,7 @@ class EventBus {
         case todoCellDeleteClicked = "todoDeleteClicked"
         case todoCellExpanded = "todoCellExpanded"
         case todoListLoaded = "todoListLoaded"
+        case todoAdded = "todoAdded"
+        case todoModified = "todoModified"
     }
 }

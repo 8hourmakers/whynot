@@ -20,18 +20,18 @@ class CategorySelectView: UIView {
     @IBOutlet weak var etc: UIView!
     
     var delegate: CategorySelectViewDelegate?
-    var nowSelected: CategoryItem?
+    var nowSelected: Category?
     
-    var relation: [UIView:String] {
+    var relations: [UIView:Category] {
         return [
-            beauty: "미용",
-            living: "집안일",
-            health: "건강",
-            study: "학업",
-            exersize: "운동",
-            friend: "친목",
-            finance: "금융",
-            etc: "기타"
+            beauty: .beauty,
+            finance: .finance,
+            friend: .friend,
+            exersize: .exercise,
+            study: .study,
+            health: .health,
+            living: .living,
+            etc: .etc
         ]
     }
     
@@ -52,49 +52,37 @@ class CategorySelectView: UIView {
         view.frame = bounds
         addSubview(view)
         
-        for btn in relation.keys {
+        for btn in relations.keys {
             btn.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.btnClicked)))
         }
     }
     
     func btnClicked(_ gesture: UITapGestureRecognizer) {
-        guard let clickedView = gesture.view, let clickedCategoryStr = relation[clickedView] else {
-            print("[ERROR]")
+        guard let clickedView = gesture.view,
+              let clickedCategory = relations[clickedView] else {
             return
         }
         
-        let icons:[UIView:(UIImage, UIImage)] = [
-            beauty: (#imageLiteral(resourceName: "categoryBeautyOn"), #imageLiteral(resourceName: "categoryBeautyOff")),
-            living: (#imageLiteral(resourceName: "categoryLivingOn"), #imageLiteral(resourceName: "categoryLivingOff")),
-            health: (#imageLiteral(resourceName: "categoryHealthOn"), #imageLiteral(resourceName: "categoryHealthOff")),
-            study: (#imageLiteral(resourceName: "categoryStudyOn"), #imageLiteral(resourceName: "categoryStudyOff")),
-            exersize: (#imageLiteral(resourceName: "categoryExersizeOn"), #imageLiteral(resourceName: "categoryExersizeOff")),
-            friend: (#imageLiteral(resourceName: "categoryFriendOn"), #imageLiteral(resourceName: "categoryFriendOff")),
-            finance: (#imageLiteral(resourceName: "categoryFinanceOn"), #imageLiteral(resourceName: "categoryFinanceOff")),
-            etc: (#imageLiteral(resourceName: "categoryEtcOn"), #imageLiteral(resourceName: "categoryEtcOff"))
-        ]
-        
-        for view in relation.keys {
-            let label: UILabel = view.subviews.filter({$0 is UILabel}).first as! UILabel
-            label.font = (relation[view] == clickedCategoryStr) ? UIFont.nanumBold.withSize(14) : UIFont.nanumLight.withSize(14)
-            
-            let imageView: UIImageView = view.subviews.filter({$0 is UIImageView}).first as! UIImageView
-            imageView.image = (relation[view] == clickedCategoryStr) ? icons[view]!.0 : icons[view]!.1
-        }
+        setCategory(clickedCategory)
 
-        for category in ServerClient.categories {
-            if category.name == clickedCategoryStr {
-                nowSelected = category
-                delegate?.categorySelectViewClicked(category: category)
-                
-                
-            }
+        delegate?.categorySelectViewClicked(category: clickedCategory)
+    }
+
+    public func setCategory(_ category: Category) {
+        nowSelected = category
+
+        for (view, category) in relations {
+            let label: UILabel = view.subviews.filter({$0 is UILabel}).first as! UILabel
+            label.font = (category == nowSelected) ? UIFont.nanumBold.withSize(14) : UIFont.nanumLight.withSize(14)
+
+            let imageView: UIImageView = view.subviews.filter({$0 is UIImageView}).first as! UIImageView
+            imageView.image = (category == nowSelected) ? category.onImage : category.offImage
         }
     }
 }
 
 protocol CategorySelectViewDelegate {
-    func categorySelectViewClicked(category: CategoryItem)
+    func categorySelectViewClicked(category: Category)
 }
 
 

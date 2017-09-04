@@ -12,7 +12,6 @@ class ServerClient {
     static let HOST = "http://8hourmakers.com/whynot/api"
     
     static var token = ""
-    static var categories:[CategoryItem] = []
     
     static func register(userName: String,
                          email: String,
@@ -151,7 +150,7 @@ class ServerClient {
     }
     
     static func makeTodo(title: String,
-                         category: CategoryItem,
+                         category: Category,
                          startDate: Date,
                          endDate: Date,
                          repeatDay: Int,
@@ -178,6 +177,44 @@ class ServerClient {
         }
     }
     
+    static func modifyTodo(id: Int,
+                           title: String,
+                           category: Category,
+                           startDate: Date,
+                           endDate: Date,
+                           repeatDay: Int,
+                           callback: ((TodoItem) -> Void)? = nil) {
+        let uri = "/todos/\(id)"
+        let json = JSON([
+            "title": title,
+            "category_id": category.id,
+            "start_datetime": GlobalDateFrmatter.string(from: startDate),
+            "end_datetime": GlobalDateFrmatter.string(from: endDate),
+            "repeat_day": repeatDay
+        ])
+        
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .put) { (res, json) in
+            if !res.isSuccess() {
+                return
+            }
+            
+            callback?(TodoItem(json))
+        }
+    }
+    
+    static func deleteTodo(todoId: Int, callback: ((Void) -> Void)? = nil) {
+        let uri = "/todos/\(todoId)"
+        let json = JSON([:])
+        
+        HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .delete) { (res, json) in
+            if !res.isSuccess() {
+                return
+            }
+            
+            callback?()
+        }
+    }
+    
     static func getCategories(callback: (([CategoryItem]) -> Void)? = nil) {
         let uri = "/categories/"
         let json = JSON([:])
@@ -186,13 +223,13 @@ class ServerClient {
             if !res.isSuccess() {
                 return
             }
-            
-            self.categories.removeAll()
+
+            Category.categoryItems.removeAll()
             for innerJson in json.arrayValue {
-                self.categories.append(CategoryItem(innerJson))
+                Category.categoryItems.append(CategoryItem(innerJson))
             }
             
-            callback?(self.categories)
+            callback?(Category.categoryItems)
         }
     }
 }

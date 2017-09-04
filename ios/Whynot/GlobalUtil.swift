@@ -82,15 +82,15 @@ extension UIViewController {
         })
     }
 
-    func hideKeyboard() {
+    @IBAction func hideKeyboard() {
         self.view.endEditing(true)
     }
 
-    func dismissWithAnimation() {
+    @IBAction func dismissWithAnimation() {
         self.dismiss(animated: true)
     }
 
-    func dismissWithoutAnimation() {
+    @IBAction func dismissWithoutAnimation() {
         self.dismiss(animated: false)
     }
 
@@ -228,5 +228,25 @@ extension CGSize {
 extension CGRect {
     mutating func changeHeight(_ height: CGFloat) {
         self.size = CGSize(self.width, height)
+    }
+}
+
+extension Array where Element: Equatable {
+    
+    // Remove first collection element that is equal to the given `object`:
+    mutating func remove(object: Element) {
+        if let index = index(of: object) {
+            remove(at: index)
+        }
+    }
+}
+
+func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
+    var i = 0
+    return AnyIterator {
+        let next = withUnsafeBytes(of: &i) { $0.load(as: T.self) }
+        if next.hashValue != i { return nil }
+        i += 1
+        return next
     }
 }

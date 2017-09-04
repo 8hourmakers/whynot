@@ -9,10 +9,13 @@
 import UIKit
 
 class TodoAddVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
-    
+
+    var modifyingItem: TodoItem?
+
     @IBOutlet weak var gradientBackground: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var addBtn: UIBarButtonItem!
     
     @IBOutlet weak var todoField: UITextField!
     @IBOutlet weak var categorySelectView: CategorySelectView!
@@ -37,6 +40,18 @@ class TodoAddVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
         navigationBar.isTranslucent = true
         
         categorySelectViewHeightOrigin = categorySelectViewHeight.constant
+
+        if let item = modifyingItem {
+            addBtn.title = "수정"
+
+            todoField.text = item.title
+            categorySelectView.setCategory(item.category)
+            repeatDayField.text = String(item.repeatDay)
+            startDatePicker.date = item.startDate
+            endDatePicker.date = item.endDate
+        } else {
+            addBtn.title = "추가"
+        }
     }
     
     @IBAction func addClicked() {
@@ -67,12 +82,32 @@ class TodoAddVC: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
         let startDate = startDatePicker.date
         let endDate = endDatePicker.date
 
-        ServerClient.makeTodo(title: title, category: category, startDate: startDate, endDate: endDate, repeatDay: repeatDay, memo: "", alarmMinute: 10) { todoItem in
+        if let modifyingItem = modifyingItem {
+            ServerClient.modifyTodo(id: modifyingItem.id, title: title, category: category, startDate: startDate, endDate: endDate, repeatDay: repeatDay) { todoItem in
+                
+            }
+            
+            modifyingItem.title = title
+            modifyingItem.category = category
+            modifyingItem.startDate = startDate
+            modifyingItem.endDate = endDate
+            modifyingItem.repeatDay = repeatDay
+            
             DispatchQueue.main.async {
-                self.showToast("성공")
+                EventBus.post(event: .todoModified, data: modifyingItem)
+                self.showToast("할 일 수정에 성공했습니다")
                 self.dismiss(animated: true)
             }
+        } else {
+            ServerClient.makeTodo(title: title, category: category, startDate: startDate, endDate: endDate, repeatDay: repeatDay, memo: "", alarmMinute: 10) { todoItem in
+                DispatchQueue.main.async {
+                    EventBus.post(event: .todoAdded, data: todoItem)
+                    self.showToast("할 일 추가에 성공했습니다")
+                    self.dismiss(animated: true)
+                }
+            }
         }
+
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
