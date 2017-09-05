@@ -138,7 +138,7 @@ class TODOScheduleListAPIView(ListAPIView):
 class ScheduleDoneAPIView(APIView):
 
     def post(self, id, *args, **kwargs):
-        schedule = ScheduleItem.objects.filter(id=id).all()[:1]
+        schedule = ScheduleItem.objects.filter(id=id).first()
         if len(schedule) == 0:
             return Response(status=HTTP_404_NOT_FOUND)
         schedule.status = 'COMPELTE'
