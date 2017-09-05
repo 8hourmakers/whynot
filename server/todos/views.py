@@ -35,7 +35,7 @@ class TODOCreateAPIView(CreateAPIView):
         data = self.request.data
         category = None
         if 'category_id' in data:
-            category = CategoryItem.objects.filter(id=data['category_id']).all()[:1]
+            category = CategoryItem.objects.filter(id=data['category_id']).first()
             if len(category) != 0:
                 category = category[0]
 
@@ -93,7 +93,7 @@ class TODORecommendAPIView(ListCreateAPIView):
         data = self.request.data
         category = None
         if 'category_id' in data:
-            category = CategoryItem.objects.filter(id=data['category_id']).all()[:1]
+            category = CategoryItem.objects.filter(id=data['category_id']).first()
             if len(category) != 0:
                 category = category[0]
 
