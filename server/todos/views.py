@@ -36,8 +36,8 @@ class TODOCreateAPIView(CreateAPIView):
         category = None
         if 'category_id' in data:
             category = CategoryItem.objects.filter(id=data['category_id']).first()
-            if len(category) != 0:
-                category = category[0]
+            if category is None:
+                return Response({'message': 'category not exists'}, status=status.HTTP_404_NOT_FOUND)
 
         if 'start_datetime' not in data:
             return Response(data={"message": "start_datetime format is invalid"}, status=HTTP_406_NOT_ACCEPTABLE)
@@ -94,8 +94,8 @@ class TODORecommendAPIView(ListCreateAPIView):
         category = None
         if 'category_id' in data:
             category = CategoryItem.objects.filter(id=data['category_id']).first()
-            if len(category) != 0:
-                category = category[0]
+            if category is None:
+                return Response({'message': 'category not exists'}, status=status.HTTP_404_NOT_FOUND)
 
         todo_item = TODOItem.objects.create(
             title = data['title'],
@@ -139,7 +139,7 @@ class ScheduleDoneAPIView(APIView):
 
     def post(self, id, *args, **kwargs):
         schedule = ScheduleItem.objects.filter(id=id).first()
-        if len(schedule) == 0:
+        if schedule is None:
             return Response(status=HTTP_404_NOT_FOUND)
         schedule.status = 'COMPELTE'
         schedule.save()
