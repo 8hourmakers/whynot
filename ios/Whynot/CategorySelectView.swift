@@ -68,7 +68,7 @@ class CategorySelectView: UIView {
         delegate?.categorySelectViewClicked(category: clickedCategory)
     }
 
-    public func setCategory(_ category: Category) {
+    public func setCategory(_ category: Category?) {
         nowSelected = category
 
         for (view, category) in relations {

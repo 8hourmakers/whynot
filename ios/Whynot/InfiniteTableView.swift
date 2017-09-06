@@ -41,6 +41,7 @@ class InfiniteTableView: UIView, UICollectionViewDataSource, UICollectionViewDel
         }
     }
 
+    private(set) var originItems:[Any] = []
     private(set) var items:[Any] = []
     private(set) var page:Int = 1
     private(set) var isLastPage:Bool = false
@@ -154,6 +155,29 @@ class InfiniteTableView: UIView, UICollectionViewDataSource, UICollectionViewDel
         }
 
         items.remove(at: index)
+        collectionView.reloadData()
+    }
+
+    public func setFilter(_ filter: ((Any) -> Bool)?) {
+        guard let filter = filter else {
+            if(originItems.count > 0) {
+                items.removeAll()
+                items.append(contentsOf: originItems)
+                originItems.removeAll()
+                collectionView.reloadData()
+            }
+            return
+        }
+
+        originItems.append(contentsOf: items)
+        items.removeAll()
+
+        for item in originItems {
+            if(filter(item)) {
+                items.append(item)
+            }
+        }
+
         collectionView.reloadData()
     }
 

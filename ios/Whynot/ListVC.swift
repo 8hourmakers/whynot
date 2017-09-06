@@ -8,16 +8,22 @@
 
 import UIKit
 
-class ListVC: UIViewController, CategorySelectViewDelegate {
+class ListVC: UIViewController, CategorySelectViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var categorySelectView: CategorySelectView!
     @IBOutlet weak var todoNumberLabel: UILabel!
     @IBOutlet weak var todoTableView: TodoTableView!
+    @IBOutlet weak var headerHeight: NSLayoutConstraint!
+    @IBOutlet weak var btnBarHeader: UIView!
+    @IBOutlet weak var categoryHeader: UIView!
+    @IBOutlet weak var searchHeader: UIView!
+    @IBOutlet weak var searchField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         categorySelectView.delegate = self
+        searchField.delegate = self
         todoTableView.initiate()
 
         EventBus.register(self, event: .todoCellDeleteClicked, action: #selector(todoCellDeleteClicked))
@@ -26,10 +32,61 @@ class ListVC: UIViewController, CategorySelectViewDelegate {
     }
 
     @IBAction func categorySelectClicked() {
-
+        setHeaderStatus(.category)
     }
 
     @IBAction func searchClicked() {
+        setHeaderStatus(.search)
+    }
+
+    @IBAction func categoryApplyClicked() {
+        guard let nowSelected = categorySelectView.nowSelected else { return }
+
+        todoTableView.setFilter { item in
+            guard let item = item as? TodoItem else { return false }
+
+            return item.category == nowSelected
+        }
+    }
+
+    @IBAction func categoryCancelClicked() {
+        setHeaderStatus(.btnBar)
+        todoTableView.setFilter(nil)
+        categorySelectView.setCategory(nil)
+    }
+
+    @IBAction func searchApplyClicked() {
+        todoTableView.setFilter({ item in
+            guard let item = item as? TodoItem else { return false }
+
+            return item.title.contains(self.searchField.text!)
+        })
+    }
+
+    @IBAction func searchCancelClicked() {
+        setHeaderStatus(.btnBar)
+        todoTableView.setFilter(nil)
+        searchField.text = ""
+    }
+
+    private func setHeaderStatus(_ status: HeaderStatus) {
+        headerHeight.constant = (status == HeaderStatus.category) ? 265 : 70
+
+        UIView.animate(
+                withDuration: 0.4,
+                animations: {
+                    self.btnBarHeader.alpha = (status == HeaderStatus.btnBar) ? 1 : 0
+                    self.categoryHeader.alpha = (status == HeaderStatus.category) ? 1 : 0
+                    self.searchHeader.alpha = (status == HeaderStatus.search) ? 1 : 0
+                    self.view.layoutIfNeeded()
+                }
+        )
+
+        if(status == HeaderStatus.search) {
+            searchField.becomeFirstResponder()
+        } else {
+            searchField.resignFirstResponder()
+        }
 
     }
 
@@ -37,8 +94,7 @@ class ListVC: UIViewController, CategorySelectViewDelegate {
         guard let item = notification.object as? TodoItem else {
             return
         }
-
-        print(self)
+        
         self.performSegue(withIdentifier: "segTodoAdd", sender: item)
     }
 
@@ -70,9 +126,16 @@ class ListVC: UIViewController, CategorySelectViewDelegate {
 
         todoNumberLabel.text = String(todoNum)
     }
-    
+
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.searchApplyClicked()
+        self.hideKeyboard()
+        return false
+    }
+
+
     func categorySelectViewClicked(category: Category) {
-        print(category)
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -89,4 +152,9 @@ class ListVC: UIViewController, CategorySelectViewDelegate {
         }
     }
 
+    enum HeaderStatus {
+        case btnBar
+        case category
+        case search
+    }
 }

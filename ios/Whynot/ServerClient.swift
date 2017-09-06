@@ -184,7 +184,7 @@ class ServerClient {
                            endDate: Date,
                            repeatDay: Int,
                            callback: ((TodoItem) -> Void)? = nil) {
-        let uri = "/todos/\(id)"
+        let uri = "/todos/\(id)/"
         let json = JSON([
             "title": title,
             "category_id": category.id,
@@ -203,7 +203,7 @@ class ServerClient {
     }
     
     static func deleteTodo(todoId: Int, callback: ((Void) -> Void)? = nil) {
-        let uri = "/todos/\(todoId)"
+        let uri = "/todos/\(todoId)/"
         let json = JSON([:])
         
         HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .delete) { (res, json) in
