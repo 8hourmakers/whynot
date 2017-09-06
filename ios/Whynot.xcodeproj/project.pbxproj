@@ -18,6 +18,7 @@
 		2702DDC31EDA92C500A68F74 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDC21EDA92C500A68F74 /* TodoItem.swift */; };
 		2702DDC51EDAA1E100A68F74 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */; };
 		27033B2B1F5C03D40095BBC1 /* TodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27033B2A1F5C03D40095BBC1 /* TodoListCell.swift */; };
+		2744ED241F5FEF39004FD4D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2744ED231F5FEF39004FD4D8 /* LaunchScreen.storyboard */; };
 		27B92D7A1F149777008F2AA9 /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B92D791F149777008F2AA9 /* ListVC.swift */; };
 		27B92D7C1F1497C6008F2AA9 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B92D7B1F1497C6008F2AA9 /* MainVC.swift */; };
 		27B92D7E1F1498D4008F2AA9 /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B92D7D1F1498D4008F2AA9 /* CalendarVC.swift */; };
@@ -86,6 +87,7 @@
 		2702DDC21EDA92C500A68F74 /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		2702DDC41EDAA1E100A68F74 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		27033B2A1F5C03D40095BBC1 /* TodoListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListCell.swift; sourceTree = "<group>"; };
+		2744ED231F5FEF39004FD4D8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27B92D791F149777008F2AA9 /* ListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		27B92D7B1F1497C6008F2AA9 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		27B92D7D1F1498D4008F2AA9 /* CalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVC.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				27D1077C1EDAA9950047355F /* NanumBarunGothicUltraLight.otf */,
 				2702DD8E1EDA78B300A68F74 /* AppDelegate.swift */,
 				2702DD921EDA78B300A68F74 /* Main.storyboard */,
+				2744ED231F5FEF39004FD4D8 /* LaunchScreen.storyboard */,
 				2702DD951EDA78B300A68F74 /* Assets.xcassets */,
 				2702DD9A1EDA78B300A68F74 /* Info.plist */,
 				27D107751EDAA2500047355F /* vc */,
@@ -413,6 +416,7 @@
 				27D1077E1EDAA9950047355F /* NanumBarunGothicBold.otf in Resources */,
 				27D1077F1EDAA9950047355F /* NanumBarunGothicLight.otf in Resources */,
 				27B92D851F14AE66008F2AA9 /* CategorySelectView.xib in Resources */,
+				2744ED241F5FEF39004FD4D8 /* LaunchScreen.storyboard in Resources */,
 				27D107801EDAA9950047355F /* NanumBarunGothicUltraLight.otf in Resources */,
 				27D1077D1EDAA9950047355F /* NanumBarunGothic.otf in Resources */,
 				2702DD961EDA78B300A68F74 /* Assets.xcassets in Resources */,
@@ -758,6 +762,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-hourmakers.Whynot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -772,6 +777,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "-hourmakers.Whynot";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

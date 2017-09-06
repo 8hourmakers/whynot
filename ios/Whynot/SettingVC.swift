@@ -23,11 +23,21 @@ class SettingVC: UIViewController {
         super.viewDidLoad()
 
         loginEmail.text = UserDefaults.standard.string(forKey: GlobalConfig.USER_DEFAULT_EMAIL)
-        
-        login.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.logoutClicked)))
+
+        announce.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.announceClicked)))
+        login.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.loginInfoClicked)))
+        customer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.customerClicked)))
+        password.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.passwordClicked)))
+        calendar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.calendarClicked)))
+        clause.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.clauseClicked)))
+        info.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.programInfoClicked)))
     }
-    
-    func logoutClicked() {
+
+    @objc private func announceClicked() {
+        self.showNotReadyAlert()
+    }
+
+    @objc private func loginInfoClicked() {
         let alert = UIAlertController(title: "로그아웃", message: "로그아웃 하시겠습니까?", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "예", style: UIAlertActionStyle.default, handler:  { action in
             UserDefaults.standard.removeObject(forKey: GlobalConfig.USER_DEFAULT_EMAIL)
@@ -47,5 +57,34 @@ class SettingVC: UIViewController {
             
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+
+    @objc private func customerClicked() {
+        self.showNotReadyAlert()
+    }
+
+    @objc private func passwordClicked() {
+        self.showNotReadyAlert()
+    }
+
+    @objc private func calendarClicked() {
+        self.showNotReadyAlert()
+    }
+
+    @objc private func clauseClicked() {
+        self.showNotReadyAlert()
+    }
+
+    @objc private func programInfoClicked() {
+        self.showNotReadyAlert()
+    }
+
+    @objc private func showNotReadyAlert() {
+        self.showAlertView(
+                title: "준비중",
+                msg: "준비중입니다.",
+                preferredStyle: .alert,
+                actions: [ UIAlertAction(title: "확인", style: .default) ]
+        )
     }
 }
