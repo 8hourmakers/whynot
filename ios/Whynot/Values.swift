@@ -19,15 +19,3 @@ extension UIFont {
     static let nanumLight = UIFont (name: "NanumBarunGothicOTFLight", size: 10)!
     static let nanumUltraLight = UIFont (name: "NanumBarunGothicOTFUltraLight", size: 10)!
 }
-
-class CustomGradientView: UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setGradient(colors: [ScheduleCell.color1, ScheduleCell.color2])
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.setGradient(colors: [ScheduleCell.color1, ScheduleCell.color2])
-    }
-}

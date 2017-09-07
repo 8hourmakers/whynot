@@ -86,6 +86,15 @@ class InfiniteTableView: UIView, UICollectionViewDataSource, UICollectionViewDel
         self.addSubview(noResultLayout)
         self.addSubview(collectionView)
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let insideFrame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        
+        self.collectionView.frame = insideFrame
+        self.noResultView?.frame = insideFrame
+    }
 
     public func initiate(nibName: String, dataSource: InfiniteTableViewDataSource) {
         self.dataSource = dataSource
