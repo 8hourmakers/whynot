@@ -23,10 +23,14 @@ class TODOListCreateAPIView(ListCreateAPIView):
 
     def get_queryset(self, *args, **kwargs):
         category_filter = self.request.GET.get('category_id')
+        query_filter = self.request.GET.get('query')
+
         # TODO : 카테고리랑 리스트, Schedule 날짜
         queryset_list = TODOItem.objects.filter(user=self.request.user)
         if category_filter:
             queryset_list = queryset_list.filter(category__id=category_filter)
+        if query_filter:
+            queryset_list = queryset_list.filter(title__contains=query_filter)
         return queryset_list.all()
 
 
