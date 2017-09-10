@@ -161,6 +161,6 @@ class ScheduleDoneAPIView(APIView):
         schedule = ScheduleItem.objects.filter(id=id).first()
         if schedule is None:
             return Response(status=HTTP_404_NOT_FOUND)
-        schedule.status = 'COMPELTE'
+        schedule.status = 'COMPLETE'
         schedule.save()
         return Response(status=HTTP_200_OK)
