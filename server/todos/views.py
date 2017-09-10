@@ -146,8 +146,6 @@ class TODOScheduleListAPIView(ListAPIView):
         # TODO :
         queryset_list = TODOItem.objects.filter(
             Q(user=self.request.user)&(
-                Q(scheduleitem__status='UNCOMPLETE') |
-                Q(scheduleitem__status='COMPLETE') |
                 Q(scheduleitem__datetime__date=date_filter)
             )
         )

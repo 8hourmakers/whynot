@@ -19,7 +19,6 @@ class TODOItem(models.Model):
 
 class ScheduleItem(models.Model):
     STATUS_CHOICES = (
-        ('UNCOMPLETE', 'UNCOMPLETE'),
         ('COMPLETE', 'COMPLETE'),
         ('TODO', 'TODO')
     )

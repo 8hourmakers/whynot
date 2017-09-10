@@ -80,10 +80,9 @@ class TODOScheduleSerializer(ModelSerializer):
 
 
     def get_schedules(self, obj):
-        schedules = ScheduleItem.objects.filter(Q(todo=obj) & (
-            Q(status='UNCOMPLETE') |
-            ( Q(status='TODO') & Q(datetime__date=today_date()))
-        )).all()
+
+        date_filter = self.context['request'].GET.get('date', today_date())
+        schedules = ScheduleItem.objects.filter(todo=obj, datetime__date=date_filter).all()
 
         serializers = ScheduleSerializer(schedules, many=True)
         return serializers.data
