@@ -136,8 +136,9 @@ class TODOScheduleListAPIView(ListAPIView):
         return queryset_list
 
 class ScheduleDoneAPIView(APIView):
+    permission_classes = [IsAuthenticated]
 
-    def post(self, id, *args, **kwargs):
+    def post(self, request, id, *args, **kwargs):
         schedule = ScheduleItem.objects.filter(id=id).first()
         if schedule is None:
             return Response(status=HTTP_404_NOT_FOUND)
