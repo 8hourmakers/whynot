@@ -1,2 +1,3 @@
-# whynot
- 주기적인 작업을 위한 TODO APP
+# WHYNOT
+
+![alt text](http://8hourmakers.com/media/portfolio/Whynot_description_0T2adJk.jpg)
