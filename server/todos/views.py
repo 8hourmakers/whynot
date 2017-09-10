@@ -16,10 +16,19 @@ from .utils import today_date
 from categories.models import CategoryItem
 from datetime import datetime, timedelta
 
-class TODOCreateAPIView(CreateAPIView):
+class TODOListCreateAPIView(ListCreateAPIView):
 
     permission_classes = [IsAuthenticated]
     serializer_class = TODOSerializer
+
+    def get_queryset(self, *args, **kwargs):
+        category_filter = self.request.GET.get('category_id')
+        # TODO : 카테고리랑 리스트, Schedule 날짜
+        queryset_list = TODOItem.objects.filter(user=self.request.user)
+        if category_filter:
+            queryset_list = queryset_list.filter(category__id=category_filter)
+        return queryset_list.all()
+
 
     def validate_datetime(self, value):
         try:
@@ -127,14 +136,21 @@ class TODOScheduleListAPIView(ListAPIView):
     serializer_class = TODOScheduleSerializer
 
     def get_queryset(self, *args, **kwargs):
-        search_query = self.request.GET.get('query', '')
+        category_filter = self.request.GET.get('category_id')
+        date_filter = self.request.GET.get('date', today_date())
+
         # TODO :
-        queryset_list = TODOItem.objects.filter(Q(user=self.request.user)&(
-            Q(scheduleitem__status='UNCOMPLETE') |
-            Q(scheduleitem__status='COMPLETE') |
-            Q(scheduleitem__datetime__date=today_date())
-        )).all()
-        return queryset_list
+        queryset_list = TODOItem.objects.filter(
+            Q(user=self.request.user)&(
+                Q(scheduleitem__status='UNCOMPLETE') |
+                Q(scheduleitem__status='COMPLETE') |
+                Q(scheduleitem__datetime__date=date_filter)
+            )
+        )
+        if category_filter:
+            queryset_list = queryset_list.filter(category__id=category_filter)
+        return queryset_list.all()
+
 
 class ScheduleDoneAPIView(APIView):
     permission_classes = [IsAuthenticated]
