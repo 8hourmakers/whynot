@@ -16,6 +16,7 @@ class CalendarVC: UIViewController, JTAppleCalendarViewDelegate, JTAppleCalendar
     @IBOutlet weak var dateMoveBtn: UIButton!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var datePickerHeight: NSLayoutConstraint!
+    @IBOutlet weak var calendarTodoTableView: CalendarTodoTableView!
 
     let datePickerHeightOrigin: CGFloat = 193
 
@@ -34,6 +35,8 @@ class CalendarVC: UIViewController, JTAppleCalendarViewDelegate, JTAppleCalendar
 
         datePicker.setValue(UIColor.white, forKeyPath: "textColor")
         datePicker.setValue(false, forKeyPath: "highlightsToday")
+
+        calendarTodoTableView.initiate()
     }
     
     func setupDateLabels(_ visibleDates: DateSegmentInfo) {
@@ -79,6 +82,9 @@ class CalendarVC: UIViewController, JTAppleCalendarViewDelegate, JTAppleCalendar
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+        calendarTodoTableView.date = date
+        calendarTodoTableView.refresh()
+
         if cellState.dateBelongsTo != .thisMonth {
             calendar.scrollToDate(date)
             return

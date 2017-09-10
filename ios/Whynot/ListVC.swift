@@ -41,31 +41,27 @@ class ListVC: UIViewController, CategorySelectViewDelegate, UITextFieldDelegate 
 
     @IBAction func categoryApplyClicked() {
         guard let nowSelected = categorySelectView.nowSelected else { return }
-
-        todoTableView.setFilter { item in
-            guard let item = item as? TodoItem else { return false }
-
-            return item.category == nowSelected
-        }
+        
+        todoTableView.category = nowSelected
+        todoTableView.refresh()
     }
 
     @IBAction func categoryCancelClicked() {
         setHeaderStatus(.btnBar)
-        todoTableView.setFilter(nil)
+        todoTableView.category = nil
+        todoTableView.refresh()
         categorySelectView.setCategory(nil)
     }
 
     @IBAction func searchApplyClicked() {
-        todoTableView.setFilter({ item in
-            guard let item = item as? TodoItem else { return false }
-
-            return item.title.contains(self.searchField.text!)
-        })
+        todoTableView.keyword = self.searchField.text ?? ""
+        todoTableView.refresh()
     }
 
     @IBAction func searchCancelClicked() {
         setHeaderStatus(.btnBar)
-        todoTableView.setFilter(nil)
+        todoTableView.keyword = nil
+        todoTableView.refresh()
         searchField.text = ""
     }
 

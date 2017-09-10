@@ -32,7 +32,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="Qb5-j9-MAI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="Qb5-j9-MAI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
@@ -1226,7 +1226,6 @@
                                                         <rect key="frame" x="52" y="22.5" width="200" height="25"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="200" id="w8T-4g-vBv"/>
                                                             <constraint firstAttribute="height" constant="25" id="xA5-4f-Xuq"/>
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1237,7 +1236,6 @@
                                                         <rect key="frame" x="52" y="46" width="200" height="1"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="200" id="bau-QW-o4m"/>
                                                             <constraint firstAttribute="height" constant="1" id="f84-i1-dU1"/>
                                                         </constraints>
                                                     </view>
@@ -1285,6 +1283,7 @@
                                                     <constraint firstItem="Fal-2E-Hsc" firstAttribute="leading" secondItem="MFx-ob-FM2" secondAttribute="trailing" id="9nC-2h-dGz"/>
                                                     <constraint firstItem="Yob-tr-365" firstAttribute="centerY" secondItem="bSS-8Z-uQZ" secondAttribute="centerY" id="OGp-oQ-Mcs"/>
                                                     <constraint firstItem="Fal-2E-Hsc" firstAttribute="top" secondItem="bSS-8Z-uQZ" secondAttribute="top" constant="23" id="Q48-C4-sSs"/>
+                                                    <constraint firstItem="yOv-UQ-Zok" firstAttribute="width" secondItem="a6e-OH-dKL" secondAttribute="width" id="SDq-eJ-iGo"/>
                                                     <constraint firstItem="Yob-tr-365" firstAttribute="leading" secondItem="bSS-8Z-uQZ" secondAttribute="leading" constant="21" id="TK9-3U-enK"/>
                                                     <constraint firstItem="yOv-UQ-Zok" firstAttribute="leading" secondItem="bSS-8Z-uQZ" secondAttribute="leading" constant="52" id="WTO-fo-WmP"/>
                                                     <constraint firstItem="XWT-6x-0wM" firstAttribute="top" secondItem="bSS-8Z-uQZ" secondAttribute="top" constant="10" id="bnW-8R-YbE"/>
@@ -1292,6 +1291,7 @@
                                                     <constraint firstAttribute="trailing" secondItem="XWT-6x-0wM" secondAttribute="trailing" constant="10" id="nUP-YX-2Bd"/>
                                                     <constraint firstAttribute="bottom" secondItem="yOv-UQ-Zok" secondAttribute="bottom" constant="23" id="qi4-6p-nyv"/>
                                                     <constraint firstItem="XWT-6x-0wM" firstAttribute="leading" secondItem="Fal-2E-Hsc" secondAttribute="trailing" id="rnY-2k-j4Q"/>
+                                                    <constraint firstItem="MFx-ob-FM2" firstAttribute="leading" secondItem="a6e-OH-dKL" secondAttribute="trailing" constant="16" id="vES-sD-kTR"/>
                                                 </constraints>
                                             </view>
                                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UIS-l4-8JJ">
@@ -1634,25 +1634,34 @@
                                     <outlet property="ibCalendarDelegate" destination="zQ0-ct-ePJ" id="n1F-Yu-OdS"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jAm-py-Kpk" customClass="CalendarTodoTableView" customModule="Whynot" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="350.5" width="375" height="245.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="CLO-yM-Yvc" secondAttribute="trailing" id="4ZF-Zg-9Xx"/>
                             <constraint firstItem="yIQ-zd-eEC" firstAttribute="top" secondItem="QIX-cY-QZm" secondAttribute="bottom" id="4u1-Vd-V5d"/>
+                            <constraint firstItem="jAm-py-Kpk" firstAttribute="leading" secondItem="y9B-yF-Zah" secondAttribute="leading" id="DFT-YS-B4X"/>
                             <constraint firstItem="QIX-cY-QZm" firstAttribute="top" secondItem="6cR-PG-Gek" secondAttribute="bottom" id="Hd9-td-zBK"/>
                             <constraint firstItem="CLO-yM-Yvc" firstAttribute="leading" secondItem="y9B-yF-Zah" secondAttribute="leading" id="IMt-db-cUg"/>
                             <constraint firstItem="6cR-PG-Gek" firstAttribute="top" secondItem="RFI-eD-O9A" secondAttribute="bottom" id="ITB-j5-lqa"/>
+                            <constraint firstAttribute="bottom" secondItem="jAm-py-Kpk" secondAttribute="bottom" id="P03-hb-VKM"/>
                             <constraint firstAttribute="trailing" secondItem="yIQ-zd-eEC" secondAttribute="trailing" id="SAU-IX-aDK"/>
                             <constraint firstItem="6cR-PG-Gek" firstAttribute="leading" secondItem="y9B-yF-Zah" secondAttribute="leading" id="SUj-YX-Bik"/>
                             <constraint firstAttribute="trailing" secondItem="6cR-PG-Gek" secondAttribute="trailing" id="T7M-dc-r9l"/>
                             <constraint firstItem="QIX-cY-QZm" firstAttribute="leading" secondItem="y9B-yF-Zah" secondAttribute="leading" id="UOc-2a-1Yh"/>
                             <constraint firstAttribute="trailing" secondItem="QIX-cY-QZm" secondAttribute="trailing" id="YOB-c7-uBN"/>
+                            <constraint firstItem="jAm-py-Kpk" firstAttribute="top" secondItem="CLO-yM-Yvc" secondAttribute="bottom" id="iOQ-XY-Phf"/>
+                            <constraint firstAttribute="trailing" secondItem="jAm-py-Kpk" secondAttribute="trailing" id="lfg-Ri-hld"/>
                             <constraint firstItem="CLO-yM-Yvc" firstAttribute="top" secondItem="yIQ-zd-eEC" secondAttribute="bottom" id="zJ8-OS-D13"/>
                             <constraint firstItem="yIQ-zd-eEC" firstAttribute="leading" secondItem="y9B-yF-Zah" secondAttribute="leading" id="zqk-zh-5UJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="calendar" destination="CLO-yM-Yvc" id="Fgz-7f-agY"/>
+                        <outlet property="calendarTodoTableView" destination="jAm-py-Kpk" id="1U0-ic-iFt"/>
                         <outlet property="dateMoveBtn" destination="WCa-Ug-GUj" id="SEy-wO-Kku"/>
                         <outlet property="datePicker" destination="fas-Hb-9zt" id="T1H-k9-sUv"/>
                         <outlet property="datePickerHeight" destination="tsy-1C-zwx" id="xFt-1L-owD"/>
@@ -2117,8 +2126,8 @@
         <image name="splash" width="375" height="667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dh2-oi-KVl"/>
-        <segue reference="d8k-OF-XXW"/>
+        <segue reference="kM7-jh-5so"/>
+        <segue reference="wtK-R3-pFY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.24705882352941178" green="0.70588235294117641" blue="0.98431372549019602" alpha="1" colorSpace="deviceRGB"/>
 </document>

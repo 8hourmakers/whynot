@@ -1,6 +1,7 @@
 //
 //  GlobalUtil.swift
 //
+//  For Swift 3.1
 //  Created by Noverish Harold on 2017.5.28..
 //  Copyright © 2017년 Noverish. All rights reserved.
 //  https://gist.github.com/Noverish/f16c1c7e780e675bca7bc1e6079159d2
@@ -232,7 +233,6 @@ extension CGRect {
 }
 
 extension Array where Element: Equatable {
-    
     // Remove first collection element that is equal to the given `object`:
     mutating func remove(object: Element) {
         if let index = index(of: object) {

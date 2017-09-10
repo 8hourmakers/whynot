@@ -75,15 +75,20 @@ class ServerClient {
         }
     }
     
-    /*
-    static func getMyTodo(keyword: String,
-                          category: Int,
+    
+    static func getMyTodo(keyword: String? = nil,
+                          category: Int? = nil,
                           callback: @escaping ([TodoItem]) -> Void) {
-        let uri = "/todos/self/"
-        let json = JSON([
-            "search":keyword,
-            "category_id":category
-        ])
+        let uri = "/todos/"
+        var json = JSON([:])
+        
+        if let keyword = keyword {
+            json["query"].string = keyword
+        }
+        
+        if let category = category {
+            json["category_id"].int = category
+        }
         
         HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .get) { (res, json) in
             if !res.isSuccess() {
@@ -99,11 +104,15 @@ class ServerClient {
             callback(items)
         }
     }
-    */
     
-    static func getSchedules(callback: @escaping ([TodoItem]) -> Void) {
+    static func getSchedules(date: Date? = nil,
+                             callback: @escaping ([TodoItem]) -> Void) {
         let uri = "/todos/schedules/"
-        let json = JSON([:])
+        var json = JSON([:])
+
+        if let date = date {
+            json["date"].string = date.toString(format: "yyyy-MM-dd")
+        }
         
         HttpUtil.connect(url: HOST+uri, json: json, httpMethod: .get) { (res, json) in
             if !res.isSuccess() {

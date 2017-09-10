@@ -17,14 +17,11 @@ class ScheduleItem {
     }
 
     enum Status {
-        case uncomplete
         case todo
         case complete
 
         static func extract(_ str: String) -> ScheduleItem.Status? {
             switch str {
-            case "UNCOMPLETE":
-                return .uncomplete
             case "TODO":
                 return .todo
             case "COMPLETE":

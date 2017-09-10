@@ -6,6 +6,9 @@
 import UIKit
 
 class TodoTableView: InfiniteTableView, InfiniteTableViewDelegate, InfiniteTableViewDataSource {
+    var keyword:String?
+    var category:Category?
+    
     func initiate() {
         super.delegate = self
         super.collectionViewFlowLayout.minimumLineSpacing = CGFloat(0)
@@ -38,7 +41,7 @@ class TodoTableView: InfiniteTableView, InfiniteTableViewDelegate, InfiniteTable
             return
         }
 
-        ServerClient.getSchedules() { (todos) in
+        ServerClient.getMyTodo(keyword: keyword, category: category?.id) { (todos) in
             callback(todos)
             EventBus.post(event: .todoListLoaded, data: todos.count)
         }

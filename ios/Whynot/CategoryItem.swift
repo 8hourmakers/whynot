@@ -45,14 +45,14 @@ enum Category {
 
     var id: Int {
         switch self {
-        case .beauty: return 1
-        case .finance: return 3
-        case .friend: return 4
-        case .exercise: return 5
-        case .study: return 6
-        case .health: return 7
-        case .living: return 8
-        case .etc: return 9
+        case .beauty: return 4
+        case .finance: return 13
+        case .friend: return 11
+        case .exercise: return 9
+        case .study: return 8
+        case .health: return 6
+        case .living: return 5
+        case .etc: return 14
         }
     }
 
