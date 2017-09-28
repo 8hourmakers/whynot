@@ -129,10 +129,10 @@ class InfiniteTableView: UIView, UICollectionViewDataSource, UICollectionViewDel
                     self.noResultLayout.isHidden = true
                     self.collectionView.reloadData()
                 }
+                
+                self.isLoading = false
+                self.refreshControl.endRefreshing()
             }
-
-            self.isLoading = false
-            self.refreshControl.endRefreshing()
         }
     }
 

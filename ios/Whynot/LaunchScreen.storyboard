@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="016-lC-tNE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="016-lC-tNE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +29,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="9Qt-Qh-DDf" secondAttribute="trailing" id="UMs-cd-E1J"/>
                             <constraint firstItem="9Qt-Qh-DDf" firstAttribute="leading" secondItem="G7P-Av-dMF" secondAttribute="leading" id="iIN-pj-Kpf"/>
-                            <constraint firstItem="oKq-Ve-nCZ" firstAttribute="top" secondItem="9Qt-Qh-DDf" secondAttribute="bottom" id="yvJ-EQ-X0z"/>
+                            <constraint firstAttribute="bottom" secondItem="9Qt-Qh-DDf" secondAttribute="bottom" id="yvJ-EQ-X0z"/>
                             <constraint firstItem="9Qt-Qh-DDf" firstAttribute="top" secondItem="G7P-Av-dMF" secondAttribute="top" id="z1k-va-crT"/>
                         </constraints>
                     </view>

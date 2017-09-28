@@ -120,7 +120,9 @@ class ListVC: UIViewController, CategorySelectViewDelegate, UITextFieldDelegate 
             return
         }
 
-        todoNumberLabel.text = String(todoNum)
+        DispatchQueue.main.async {
+            self.todoNumberLabel.text = String(todoNum)
+        }
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
