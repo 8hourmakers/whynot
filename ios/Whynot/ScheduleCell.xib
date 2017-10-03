@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,27 +18,30 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="dGz-6Y-KgF" customClass="ScheduleCell" customModule="Whynot" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="66"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="350" height="66"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yd6-dE-FJU">
-                        <rect key="frame" x="10" y="8" width="330" height="50"/>
+                        <rect key="frame" x="20" y="8" width="335" height="50"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9iN-Ve-Rik">
-                                <rect key="frame" x="0.0" y="0.0" width="330" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영어 단어 20개 외우기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJn-cD-XfZ">
-                                <rect key="frame" x="22" y="15.5" width="144" height="19"/>
+                                <rect key="frame" x="22" y="16" width="142" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="5yN-8J-wfQ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="NanumBarunGothicOTF" family="NanumBarunGothicOTF" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFc-Z8-DJu">
-                                <rect key="frame" x="278" y="4" width="46" height="46"/>
+                                <rect key="frame" x="283" y="4" width="46" height="46"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="RgK-Gb-rWb">
                                         <rect key="frame" x="-0.5" y="-0.5" width="47" height="47"/>
@@ -60,7 +63,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="9iN-Ve-Rik" secondAttribute="trailing" id="5kF-GH-ro8"/>
-                            <constraint firstAttribute="width" constant="330" id="AYm-3B-4s9"/>
                             <constraint firstItem="9iN-Ve-Rik" firstAttribute="top" secondItem="yd6-dE-FJU" secondAttribute="top" id="Hc9-vg-2U5"/>
                             <constraint firstItem="jJn-cD-XfZ" firstAttribute="centerY" secondItem="yd6-dE-FJU" secondAttribute="centerY" id="I1u-yC-GSe"/>
                             <constraint firstItem="xFc-Z8-DJu" firstAttribute="top" secondItem="yd6-dE-FJU" secondAttribute="top" constant="4" id="ShT-0t-xsh"/>
@@ -77,7 +79,9 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="yd6-dE-FJU" firstAttribute="centerY" secondItem="dGz-6Y-KgF" secondAttribute="centerY" id="3k3-JR-cpL"/>
+                <constraint firstItem="yd6-dE-FJU" firstAttribute="leading" secondItem="dGz-6Y-KgF" secondAttribute="leading" constant="20" id="C7b-jX-uGP"/>
                 <constraint firstItem="yd6-dE-FJU" firstAttribute="centerX" secondItem="dGz-6Y-KgF" secondAttribute="centerX" id="pKX-31-P5Q"/>
+                <constraint firstAttribute="trailing" secondItem="yd6-dE-FJU" secondAttribute="trailing" constant="20" id="taP-wP-E7X"/>
             </constraints>
             <connections>
                 <outlet property="bg" destination="9iN-Ve-Rik" id="rOr-if-OUS"/>

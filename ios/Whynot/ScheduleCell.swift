@@ -26,6 +26,7 @@ class ScheduleCell: UICollectionViewCell {
     }
     
     func setItem(_ item: TodoItem) {
+        self.layoutIfNeeded()
         self.item = item
 
         let isAllDone = item.schedules.reduce(true) { $0 && ($1.status == .complete) }

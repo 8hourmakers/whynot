@@ -54,6 +54,12 @@ extension UIView {
         gradientLayer1.startPoint = startPoint
         gradientLayer1.endPoint = endPoint
 
+        for subLayer in self.layer.sublayers ?? [] {
+            if subLayer is CAGradientLayer {
+                subLayer.removeFromSuperlayer()
+            }
+        }
+        
         self.layer.addSublayer(gradientLayer1)
     }
 

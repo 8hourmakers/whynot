@@ -24,6 +24,10 @@ class MainVC: UIViewController {
     @IBOutlet weak var settingTabBtn: UIButton!
     
     var nowTab = MainTab.home
+
+    var listShouldLoad = false
+    var calendarShouldLoad = false
+    var settingShouldLoad = false
     
     @IBAction func tabBtnClicked(_ sender: Any) {
         switch sender as! UIButton {
@@ -31,10 +35,22 @@ class MainVC: UIViewController {
             nowTab = .home
         case listTabBtn:
             nowTab = .list
+            if(!listShouldLoad) {
+                listShouldLoad = true
+                performSegue(withIdentifier: "listEmbed", sender: nil)
+            }
         case calendarTabBtn:
             nowTab = .calendar
+            if(!calendarShouldLoad) {
+                calendarShouldLoad = true
+                performSegue(withIdentifier: "calendarEmbed", sender: nil)
+            }
         case settingTabBtn:
             nowTab = .setting
+            if(!settingShouldLoad) {
+                settingShouldLoad = true
+                performSegue(withIdentifier: "settingEmbed", sender: nil)
+            }
         default:
             break
         }
@@ -61,7 +77,21 @@ class MainVC: UIViewController {
     @IBAction func calendarTabClicked() {
         nowTab = .calendar
     }
-    
+
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        switch identifier {
+        case "listEmbed":
+            return listShouldLoad
+        case "calendarEmbed":
+            return calendarShouldLoad
+        case "settingEmbed":
+            return settingShouldLoad
+        default:
+            return super.shouldPerformSegue(withIdentifier: identifier, sender: sender)
+        }
+    }
+
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.destination {
         case is HomeVC:

@@ -129,7 +129,7 @@ class ServerClient {
         }
     }
 
-    static func completeSchedule(scheduleId: Int, callback: ((Void) -> Void)? = nil) {
+    static func completeSchedule(scheduleId: Int, callback: (() -> Void)? = nil) {
         let uri = "/todos/schedules/\(scheduleId)/done/"
         let json = JSON([:])
 
@@ -211,7 +211,7 @@ class ServerClient {
         }
     }
     
-    static func deleteTodo(todoId: Int, callback: ((Void) -> Void)? = nil) {
+    static func deleteTodo(todoId: Int, callback: (() -> Void)? = nil) {
         let uri = "/todos/\(todoId)/"
         let json = JSON([:])
         
