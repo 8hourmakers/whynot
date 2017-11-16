@@ -16,6 +16,17 @@ class ScheduleTableView: InfiniteTableView, InfiniteTableViewDelegate, InfiniteT
         super.collectionViewFlowLayout.minimumLineSpacing = CGFloat(0)
         super.collectionView.showsVerticalScrollIndicator = false
         super.initiate(nibName: String(describing: ScheduleCell.self), dataSource: self)
+        
+        EventBus.register(self, event: .todoAdded, action: #selector(self.todoAdded))
+        EventBus.register(self, event: .todoModified, action: #selector(self.todoModified))
+    }
+    
+    @objc private func todoAdded(_ notification: Notification) {
+        refresh()
+    }
+    
+    @objc private func todoModified(_ notification: Notification) {
+        refresh()
     }
 
     func infiniteTableView(_ infiniteTableView: InfiniteTableView, set cell: UICollectionViewCell, for item: Any) -> UICollectionViewCell {

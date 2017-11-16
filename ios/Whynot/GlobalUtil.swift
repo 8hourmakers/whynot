@@ -47,20 +47,24 @@ extension UIView {
                      endPoint: CGPoint = CGPoint(1, 1),
                      cornerRadius: CGFloat = 0) {
 
-        let gradientLayer1 = CAGradientLayer()
-        gradientLayer1.frame = self.bounds
-        gradientLayer1.colors = colors.map { $0.cgColor }
-        gradientLayer1.cornerRadius = cornerRadius
-        gradientLayer1.startPoint = startPoint
-        gradientLayer1.endPoint = endPoint
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        gradientLayer.colors = colors.map { $0.cgColor }
+        gradientLayer.cornerRadius = cornerRadius
+        gradientLayer.startPoint = startPoint
+        gradientLayer.endPoint = endPoint
 
         for subLayer in self.layer.sublayers ?? [] {
             if subLayer is CAGradientLayer {
                 subLayer.removeFromSuperlayer()
             }
         }
-        
-        self.layer.addSublayer(gradientLayer1)
+
+        self.layer.addSublayer(gradientLayer)
+    }
+
+    func setRadius(_ radius: CGFloat = 0) {
+        self.layer.cornerRadius = radius
     }
 
     func updateLayers() {
@@ -217,6 +221,12 @@ extension UIColor {
                 g: gray,
                 b: gray
         )
+    }
+}
+
+extension UIEdgeInsets {
+    init(_ size: CGFloat) {
+        self.init(top: size, left: size, bottom: size, right: size)
     }
 }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="c3U-ng-Ngb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="c3U-ng-Ngb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -2093,6 +2093,7 @@
                         <outlet property="emailField" destination="F8h-o8-RoU" id="cFd-n9-Fcu"/>
                         <outlet property="passwordField" destination="7wz-Zl-WSf" id="tTU-d0-Cc9"/>
                         <outlet property="registerBtn" destination="Irn-Y7-bTq" id="xJy-3f-b9k"/>
+                        <outlet property="scrollViewBottom" destination="hbo-EU-Ksd" id="2lK-8N-rbV"/>
                         <outlet property="userNameField" destination="9hk-yK-os8" id="7FF-wB-HHL"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="segRegisterSuccess" id="50S-DR-VcX"/>
                     </connections>
@@ -2116,7 +2117,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wtK-R3-pFY"/>
-        <segue reference="kM7-jh-5so"/>
+        <segue reference="50S-DR-VcX"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.24705882352941178" green="0.70588235294117641" blue="0.98431372549019602" alpha="1" colorSpace="deviceRGB"/>
 </document>

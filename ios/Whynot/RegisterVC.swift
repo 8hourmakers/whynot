@@ -10,6 +10,7 @@ import UIKit
 
 class RegisterVC: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
     @IBOutlet weak var closeBtn: UIView!
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
@@ -24,6 +25,9 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
         
         //hide keyboard when screent tapped
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         //added return button clicked listener
         emailField.delegate = self
@@ -60,6 +64,16 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
             registerClicked()
         }
         return true
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.scrollViewBottom.constant += keyboardSize.height
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+            self.scrollViewBottom.constant = 0
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
